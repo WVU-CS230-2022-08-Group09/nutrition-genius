@@ -7,7 +7,7 @@ import {NavBarComponent} from './home-page/nav-bar/nav-bar.component';
 
 const routes: Routes = [
   {path : '', component:HomePageComponent},
-  /* {path : 'Profile', component:}, */ 
+  {path : 'Profile', component:ProfilePageComponent},
     
 
 ];
