@@ -7,6 +7,8 @@
 .slogan{
     text-align: center;
 }
-.card-header{
+.features{
+    text-align: center;
+    font-weight: lighter;
     margin: 20px;
 }
