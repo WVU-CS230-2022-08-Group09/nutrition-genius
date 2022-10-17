@@ -1,0 +1,12 @@
+.row{
+    background-color:rgba(85, 107, 47, 0.626);
+}
+.heading{
+     text-align: center;
+}
+.slogan{
+    text-align: center;
+}
+.card-header{
+    margin: 20px;
+}
