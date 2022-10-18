@@ -1,0 +1,15 @@
+.card{
+    margin: 50px auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 50px; /* Added */
+}
+.inputEmail{
+    margin: 200px;
+}
+.card-body{
+    margin-top: 100px;
+    text-align: center;
+}
+.create-account{
+    margin: 10px auto;
+}
