@@ -7,6 +7,7 @@ import { NavBarComponent } from './home-page/nav-bar/nav-bar.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ProfilePageComponent } from './profile-page/profile-page/profile-page.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { RecipeComponent } from './recipe/recipe.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
     HomePageComponent,
     ProfilePageComponent,
     AboutUsComponent,
+    RecipeComponent
    
   ],
   imports: [
