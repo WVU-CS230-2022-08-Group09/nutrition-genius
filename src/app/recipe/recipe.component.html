@@ -1,3 +1,9 @@
+
+<ejs-grid [dataSource]="data" [allowGrouping]="true" >
+    <ng-template #groupSettingsCaptionTemplate let-data>
+        <span>{{data.meal_type}}</span>
+    </ng-template>
+</ejs-grid>
 <div class="container">
     <div class="row">
         <div class="col-md-3 mx-auto my-5" *ngFor="let x of reel">

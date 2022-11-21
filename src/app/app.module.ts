@@ -8,6 +8,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { ProfilePageComponent } from './profile-page/profile-page/profile-page.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { RecipeComponent } from './recipe/recipe.component';
+import { TreeGridModule } from '@syncfusion/ej2-angular-treegrid';
+import { GridModule, PagerModule, GroupService } from '@syncfusion/ej2-angular-grids';
 
 @NgModule({
   declarations: [
@@ -22,9 +24,11 @@ import { RecipeComponent } from './recipe/recipe.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    TreeGridModule,
+    GridModule, PagerModule,
    
   ],
-  providers: [],
+  providers: [GroupService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
