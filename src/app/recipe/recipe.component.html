@@ -1,10 +1,21 @@
 
-<ejs-grid [dataSource]="data" [allowGrouping]="true" >
-    <ng-template #groupSettingsCaptionTemplate let-data>
-        <span>{{data.meal_type}}</span>
-    </ng-template>
+<ejs-grid [dataSource]="data" [allowGrouping]="true" [groupSettings]="groupOptions">
+    <e-columns>
+        <e-column field="image" width="150" headerText="" >
+        <ng-template #template let-data>
+            <div>
+            <img style="width: 150px; height: 100px" src="{{data.image}}" >
+        </div>
+        </ng-template></e-column>
+        <e-column field="name" headerText="Recipe"></e-column>
+        <e-column field="meal_type" headerText="Type"></e-column>
+        <e-column field="servings" headerText="Servings"></e-column>
+        <e-column field="meal" headerText="Meal"></e-column>
+        <e-column field="calories" headerText="Calories"></e-column>
+    </e-columns>
 </ejs-grid>
-<div class="container">
+
+<!-- <div class="container">
     <div class="row">
         <div class="col-md-3 mx-auto my-5" *ngFor="let x of reel">
             <div class="card-body">
@@ -23,4 +34,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->

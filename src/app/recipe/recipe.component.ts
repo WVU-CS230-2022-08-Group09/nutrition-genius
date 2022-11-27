@@ -27,7 +27,7 @@ export class RecipeComponent implements OnInit {
     this.ingredients = '';
     this.image = '';
     this.data = sampleData;  
-    this.groupOptions = { columns: ["meal_type"], showDropArea: true}
+    this.groupOptions = { columns: ["meal_type"], showDropArea: false}
    }
   public data: Object[];
   public groupOptions: GroupSettingsModel;
