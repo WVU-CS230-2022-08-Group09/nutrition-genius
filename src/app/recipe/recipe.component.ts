@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { GroupSettings, GroupSettingsModel } from '@syncfusion/ej2-angular-grids';
 import { view_all_recipes } from './recipe-database';
 import { view_all_recipes_model } from './recipe-database.model';
+import { sampleData } from "./recipe-datasource"
 
 @Component({
   selector: 'app-recipe',
@@ -24,14 +26,23 @@ export class RecipeComponent implements OnInit {
     this.meal = '';
     this.ingredients = '';
     this.image = '';
-
+    this.data = sampleData;  
+    this.groupOptions = { columns: ["meal_type"], showDropArea: true}
+   }
+  public data: Object[];
+  public groupOptions: GroupSettingsModel;
+  
+  ngOnInit(): void {
+    //this.data = sampleData;
+    //this.groupOptions = { columns: ['meal_type', 'servings'], showDropArea: false}
+  
     for (var x of view_all_recipes) {
-      console.log(x)
+      //console.log(x)
       this.reel.push(x)
     }
-   }
 
-  ngOnInit(): void {
+
   }
+
 
 }
