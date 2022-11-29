@@ -10,6 +10,7 @@ import { IngredientsComponent } from './ingredients/ingredients.component';
 
 
 
+
 const routes: Routes = [
   {path : '', component:HomePageComponent},
   {path : 'Profile', component:ProfilePageComponent},

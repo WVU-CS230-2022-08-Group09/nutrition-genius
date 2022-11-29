@@ -24,12 +24,13 @@
     "@syncfusion/ej2-angular-grids": "*",
     "@syncfusion/ej2-angular-schedule": "*",
     "@syncfusion/ej2-angular-treegrid": "^20.3.57",
+    "@syncfusion/ej2-material-theme": "~20.3.57",
     "bootstrap": "^5.2.2",
     "firebase": "^9.13.0",
     "rxjs": "~7.5.0",
+    "syncfusion-javascript": "^20.3.56",
     "tslib": "^2.3.0",
-    "zone.js": "~0.11.4",
-    "@syncfusion/ej2-material-theme": "~20.3.57"
+    "zone.js": "~0.11.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.2.0",

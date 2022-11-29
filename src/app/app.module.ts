@@ -12,6 +12,7 @@ import { TreeGridModule } from '@syncfusion/ej2-angular-treegrid';
 import { GridModule, PagerModule, GroupService } from '@syncfusion/ej2-angular-grids';
 import { IngredientsComponent } from './ingredients/ingredients.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,8 +21,9 @@ import { IngredientsComponent } from './ingredients/ingredients.component';
     ProfilePageComponent,
     AboutUsComponent,
     RecipeComponent,
-    IngredientsComponent
-   
+    IngredientsComponent,
+    
+    
   ],
   imports: [
     BrowserModule,
