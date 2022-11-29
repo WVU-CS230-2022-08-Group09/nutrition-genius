@@ -10,6 +10,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { TreeGridModule } from '@syncfusion/ej2-angular-treegrid';
 import { GridModule, PagerModule, GroupService } from '@syncfusion/ej2-angular-grids';
+import { IngredientsComponent } from './ingredients/ingredients.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { GridModule, PagerModule, GroupService } from '@syncfusion/ej2-angular-g
     HomePageComponent,
     ProfilePageComponent,
     AboutUsComponent,
-    RecipeComponent
+    RecipeComponent,
+    IngredientsComponent
    
   ],
   imports: [
