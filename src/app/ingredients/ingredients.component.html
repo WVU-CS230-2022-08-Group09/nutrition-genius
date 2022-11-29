@@ -1,2 +1,10 @@
-<ejs-grid dataSource="ingredients"></ejs-grid>
+<ejs-grid [dataSource]="ingredients" [editSettings]="editSettings" [toolbar]="toolbar">
+    <e-columns>
+        <e-column field="name" ></e-column>
+        <e-column field="calories" ></e-column>
+        <e-column field="carbs" ></e-column>
+        <e-column field="fat" ></e-column>
+        <e-column field="protein" ></e-column>
+    </e-columns>
+</ejs-grid>
 

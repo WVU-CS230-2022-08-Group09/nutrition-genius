@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './home-page/nav-bar/nav-bar.component';
@@ -28,7 +28,7 @@ import { IngredientsComponent } from './ingredients/ingredients.component';
     AppRoutingModule,
     TreeGridModule,
     GridModule, PagerModule,
-   
+   HttpClientModule
   ],
   providers: [GroupService],
   bootstrap: [AppComponent]

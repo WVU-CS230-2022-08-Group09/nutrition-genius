@@ -27,14 +27,14 @@ export class RecipeComponent implements OnInit {
     this.ingredients = '';
     this.image = '';
     this.data = sampleData;  
+    // group options sets the column(s) for the grouping and not showing 
+    // the group drop area to allow removal or more grouping
     this.groupOptions = { columns: ["meal_type"], showDropArea: false}
    }
   public data: Object[];
   public groupOptions: GroupSettingsModel;
   
   ngOnInit(): void {
-    //this.data = sampleData;
-    //this.groupOptions = { columns: ['meal_type', 'servings'], showDropArea: false}
   
     for (var x of view_all_recipes) {
       //console.log(x)
