@@ -38,6 +38,15 @@
     background-color:aliceblue;
 }
 
+.card-b{
+    background-color:transparent;
+}
+
+
+
+
+
+
 .card-circle{
     text-align:center;
      margin-top:50px;
@@ -60,7 +69,7 @@
      display:block;
 }
  .card-circle:nth-child(2){
-    background:rgba(85, 107, 47, 0.626);
+    background:rgba(40, 51, 22, 0.626);
 }
  .card-circle .btn{
     Font-family: Montserrat;
@@ -75,7 +84,7 @@
    transition: all ease-in-out 0.2s;
 }
  .card-circle:hover .btn{
-    background:#00A8CC;
+    background:#ebf2f3;
      color:rgb(0, 0, 0);
    border: 1px solid transparent;
 }
@@ -83,7 +92,7 @@
     transform: scale(1.1);
 }
  .card-circle:hover{
-    border:10px solid #b1e8f5;
+    border:10px solid #bff2ff;
 }
  .card-circle:hover i {
    text-shadow: 0px -1px 10px #00A8CC;
