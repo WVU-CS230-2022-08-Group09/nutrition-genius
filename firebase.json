@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/nutrition-genius",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
