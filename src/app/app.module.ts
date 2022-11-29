@@ -13,6 +13,7 @@ import { GridModule, PagerModule, GroupService } from '@syncfusion/ej2-angular-g
 import { IngredientsComponent } from './ingredients/ingredients.component';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

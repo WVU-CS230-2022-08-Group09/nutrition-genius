@@ -11,6 +11,7 @@ import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 
 
 
+
 const routes: Routes = [
   {path : '', component:HomePageComponent},
   {path : 'Profile', component:ProfilePageComponent},
