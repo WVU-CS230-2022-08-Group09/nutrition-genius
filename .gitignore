@@ -1,5 +1,5 @@
 *.map
 *.md
 *.proto
-.angular/cache/*.*
-node_modules/*.*
+.angular/
+node_modules/
