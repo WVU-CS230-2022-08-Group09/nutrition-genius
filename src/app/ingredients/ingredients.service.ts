@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { IngredientModel } from "./ingredient.model";
+import { IngredientModel } from "../models/ingredient.model";
+
 
 @Injectable(
     {providedIn: 'root'}
@@ -14,8 +15,11 @@ export class IngredientsService {
 
     }
 
+
+
+
     getIngredients() {
-        return this.http.get<IngredientModel []>(this.baseUrl = this.ingredientsEndPoint)
+        return this.http.get<IngredientModel []>(this.baseUrl + this.ingredientsEndPoint)
     }
     getIngredient(name:string){
         return this.http.get<IngredientModel>(this.baseUrl + 'ingredients' + '/' + name + '.json');

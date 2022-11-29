@@ -5,6 +5,8 @@ import { ProfilePageComponent } from './profile-page/profile-page/profile-page.c
 import { AboutUsComponent } from './about-us/about-us.component';
 import {NavBarComponent} from './home-page/nav-bar/nav-bar.component';
 import { RecipeComponent } from './recipe/recipe.component';
+import { IngredientsComponent } from './ingredients/ingredients.component';
+
 
 
 
@@ -12,7 +14,8 @@ const routes: Routes = [
   {path : '', component:HomePageComponent},
   {path : 'Profile', component:ProfilePageComponent},
   {path : 'About', component:AboutUsComponent},
-  {path : 'Recipes', component:RecipeComponent}
+  {path : 'Recipes', component:RecipeComponent},
+  {path : 'Ingredients', component:IngredientsComponent}
   /* {path : 'Profile', component:}, */ 
     
 
