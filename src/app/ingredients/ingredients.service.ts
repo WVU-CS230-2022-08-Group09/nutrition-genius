@@ -25,4 +25,8 @@ export class IngredientsService {
         return this.http.get<IngredientModel>(this.baseUrl + 'ingredients' + '/' + name + '.json');
     }
 
+    addIngredient(ingredient: IngredientModel) {
+        
+    }
+
 } 

@@ -13,6 +13,9 @@ import { GridModule, PagerModule, GroupService } from '@syncfusion/ej2-angular-g
 import { IngredientsComponent } from './ingredients/ingredients.component';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,9 @@ import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
     AppRoutingModule,
     TreeGridModule,
     GridModule, PagerModule,
-   HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
   providers: [GroupService],
   bootstrap: [AppComponent]
