@@ -36,6 +36,7 @@ export class RecipeComponent implements OnInit {
   
   ngOnInit(): void {
   
+    // this is still pulling from a mock list since it's not in the database yet
     for (var x of view_all_recipes) {
       //console.log(x)
       this.reel.push(x)

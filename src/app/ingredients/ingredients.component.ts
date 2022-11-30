@@ -19,21 +19,7 @@ export class IngredientsComponent implements OnInit {
     this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Dialog' };
     this.toolbar = ['Add', 'Edit', 'Delete'];
 
-
-  }
-
-
-
-  ngOnInit(): void {
-        // get all ingredients from the database for display in the grid
-        this.ingredientsService.getIngredients().subscribe((data: IngredientModel []) => {
-          console.log("Fetching ingredients");
-          for (var ingredient of data) {
-            console.log(ingredient);
-            this.ingredients.push(ingredient);
-          }
-        }); 
-        
+    // // get all ingredients from the database for display in the grid
     // this.ingredientsService.getIngredients().subscribe((data: IngredientModel []) => {
     //   console.log("Fetching ingredients");
     //   for (var ingredient of data) {
@@ -41,6 +27,19 @@ export class IngredientsComponent implements OnInit {
     //     this.ingredients.push(ingredient);
     //   }
     // }); 
+  }
+
+
+
+  ngOnInit(): void {
+    
+    this.ingredientsService.getIngredients().subscribe((data: IngredientModel []) => {
+      console.log("Fetching ingredients");
+      for (var ingredient of data) {
+        console.log(ingredient);
+        this.ingredients.push(ingredient);
+      }
+    }); 
 
 
     // this.ingredientsService.getIngredients().subscribe((data: IngredientModel[]) => {
