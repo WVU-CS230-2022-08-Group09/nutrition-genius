@@ -4,6 +4,7 @@
         <e-column field="image" width="150" headerText="" >
         <ng-template #template let-data>
             <div>
+            <!-- show the icon in the grid -->
             <img style="width: 150px; height: 100px" src="{{data.image}}" >
         </div>
         </ng-template></e-column>
@@ -14,24 +15,3 @@
         <e-column field="calories" headerText="Calories"></e-column>
     </e-columns>
 </ejs-grid>
-
-<!-- <div class="container">
-    <div class="row">
-        <div class="col-md-3 mx-auto my-5" *ngFor="let x of reel">
-            <div class="card-body">
-                <img class = "img-fluid"[src]="x.image" alt="Card image cap">
-             
-                <div class="card-body">
-                    <h5 class="card-title">{{x.name}} </h5>
-
-                    <h5><strong>Meal Category</strong></h5>
-                    <li class="list-group-item">{{x.meal_type}}</li>
-                    <h5><strong>Serving Size</strong></h5>
-                    <li class="list-group-item">{{x.servings}}</li>
-                
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->

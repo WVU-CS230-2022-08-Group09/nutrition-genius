@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyD-2f_Tk0S8vGm4xeZB3IQ5ptb740Tdfz4",
+    authDomain: "nutrition-genius.firebaseapp.com",
+    databaseURL: "https://nutrition-genius-default-rtdb.firebaseio.com",
+    projectId: "nutrition-genius",
+    storageBucket: "nutrition-genius.appspot.com",
+    messagingSenderId: "635447365282",
+    appId: "1:635447365282:web:479bc667528ebb7f3e51fb",
+    measurementId: "G-76TG9DZ5FM"
+  }
 };
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";

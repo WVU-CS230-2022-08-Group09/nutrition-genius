@@ -11,9 +11,12 @@ import { RecipeComponent } from './recipe/recipe.component';
 import { TreeGridModule } from '@syncfusion/ej2-angular-treegrid';
 import { GridModule, PagerModule, GroupService } from '@syncfusion/ej2-angular-grids';
 import { IngredientsComponent } from './ingredients/ingredients.component';
-import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
-import { ContactComponent } from './contact/contact.component';
-
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { environment } from '../environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,16 +25,20 @@ import { ContactComponent } from './contact/contact.component';
     ProfilePageComponent,
     AboutUsComponent,
     RecipeComponent,
-    IngredientsComponent,
-    SignUpPageComponent,
-   ContactComponent
+    IngredientsComponent
+   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     TreeGridModule,
     GridModule, PagerModule,
-   HttpClientModule
+   HttpClientModule,
+   AngularFireModule.initializeApp(environment.firebase),
+   AngularFireAuthModule,
+   AngularFirestoreModule,
+   AngularFireStorageModule,
+   AngularFireDatabaseModule,
   ],
   providers: [GroupService],
   bootstrap: [AppComponent]
