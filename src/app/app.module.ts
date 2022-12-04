@@ -12,7 +12,7 @@ import { TreeGridModule } from '@syncfusion/ej2-angular-treegrid';
 import { GridModule, PagerModule, GroupService } from '@syncfusion/ej2-angular-grids';
 import { IngredientsComponent } from './ingredients/ingredients.component';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
-
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -23,8 +23,8 @@ import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
     AboutUsComponent,
     RecipeComponent,
     IngredientsComponent,
-    SignUpPageComponent
-   
+    SignUpPageComponent,
+   ContactComponent
   ],
   imports: [
     BrowserModule,
