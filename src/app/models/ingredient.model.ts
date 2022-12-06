@@ -1,6 +1,7 @@
+import { Observable } from "rxjs";
 
 
-export class IngredientModel{
+export class IngredientModel { //extends Observable<IngredientModel> {
     name!: string;
     calories!: number;
     carbs!: number;

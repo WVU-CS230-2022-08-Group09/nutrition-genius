@@ -1,7 +1,9 @@
 <!-- markup for grid to show ingredient information from the database
     This is an editable grid -->
 
-<ejs-grid [dataSource]="ingredients" [editSettings]="editSettings" [toolbar]="toolbar">
+    <!-- allowPaging="true" -->
+<ejs-grid #grid [dataSource]='ingredients|async' [allowPaging]="true" [pageSettings]="pageSettings" [editSettings]="editSettings" [toolbar]="toolbar" 
+(dataSourceChanged)='dataSourceChanged($event)' (dataStateChange)= 'dataStateChange($event)'>
     <e-columns>
         <e-column field="name" ></e-column>
         <e-column field="calories" ></e-column>
