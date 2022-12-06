@@ -8,7 +8,6 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { ProfilePageComponent } from './profile-page/profile-page/profile-page.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { RecipeComponent } from './recipe/recipe.component';
-import { FooterComponent } from './home-page/footer/footer.component';
 import { TreeGridModule } from '@syncfusion/ej2-angular-treegrid';
 import { GridModule, PagerModule, GroupService } from '@syncfusion/ej2-angular-grids';
 import { IngredientsComponent } from './ingredients/ingredients.component';
@@ -18,7 +17,6 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +31,6 @@ import { environment } from '../environments/environment';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    TreeGridModule,
     GridModule, PagerModule,
    HttpClientModule,
    AngularFireModule.initializeApp(environment.firebase),
