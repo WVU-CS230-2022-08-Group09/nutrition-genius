@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IngredientModel } from '../models/ingredient.model';
 import { IngredientsService } from './ingredients.service';
 import { EditService, PageService, ToolbarService } from '@syncfusion/ej2-angular-grids';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-ingredients',
@@ -11,43 +12,33 @@ import { EditService, PageService, ToolbarService } from '@syncfusion/ej2-angula
 })
 export class IngredientsComponent implements OnInit {
 
-  ingredients: IngredientModel[] = [];
+  ingredients: any;
   public editSettings: Object;
   public toolbar: string[];
 
   constructor(private ingredientsService: IngredientsService) {
     this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Dialog' };
     this.toolbar = ['Add', 'Edit', 'Delete'];
+    //this.ingredients = ingredientsService.getIngredients();
 
-    // // get all ingredients from the database for display in the grid
-    // this.ingredientsService.getIngredients().subscribe((data: IngredientModel []) => {
-    //   console.log("Fetching ingredients");
-    //   for (var ingredient of data) {
-    //     console.log(ingredient);
-    //     this.ingredients.push(ingredient);
-    //   }
-    // }); 
   }
 
 
 
   ngOnInit(): void {
-    
-    this.ingredientsService.getIngredients().subscribe((data: IngredientModel []) => {
-      console.log("Fetching ingredients");
-      for (var ingredient of data) {
-        console.log(ingredient);
-        this.ingredients.push(ingredient);
-      }
-    }); 
+    this.getIngredients();
+  }
 
-
-    // this.ingredientsService.getIngredients().subscribe((data: IngredientModel[]) => {
-    //   for (var ingredient of data) {
-        
-    //     this.ingredients.push(ingredient);
-    //   }
-    // });
+  getIngredients(): void {
+    this.ingredientsService.getIngredients().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({ key: c.payload.key, ...c.payload.val() })
+        )
+      )
+    ).subscribe(data => {
+      this.ingredients = data;
+    });
   }
 
 }

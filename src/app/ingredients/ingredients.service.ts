@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { IngredientModel } from "../models/ingredient.model";
-import { AngularFireDatabase } from "@angular/fire/compat/database";
+import { AngularFireDatabase, AngularFireList } from "@angular/fire/compat/database";
 
 
 @Injectable(
@@ -8,27 +8,31 @@ import { AngularFireDatabase } from "@angular/fire/compat/database";
 )
 export class IngredientsService {
 
-    private baseUrl:string = "https://nutrition-genius-default-rtdb.firebaseio.com/";
-    private ingredientsEndPoint = "ingredients.json";
+    ingredientsRef: AngularFireList<IngredientModel>;
 
     // inject database into the component
     constructor(private db:AngularFireDatabase) {
-
+        this.ingredientsRef = db.list('/ingredients');
     }
 
-    getIngredients() {
+    getIngredients(): AngularFireList<IngredientModel> {
         // return the list of ingredients from the database
-        return this.db.list<IngredientModel>("ingredients").valueChanges();
+        //return this.db.list<IngredientModel>("ingredients").valueChanges();
+        return this.ingredientsRef;
     }
 
-    // not used yet
-    // getIngredient(name:string){
-    //     return this.http.get<IngredientModel>(this.baseUrl + 'ingredients' + '/' + name + '.json');
-    // }
-
-    addIngredient(ingredient: IngredientModel) {
+    addIngredient(ingredient: IngredientModel): any {
         // push new ingredient to the database
-        this.db.list<IngredientModel>("ingredient").push(ingredient);
+        //this.db.list<IngredientModel>("ingredient").push(ingredient);
+        return this.ingredientsRef.push(ingredient);
+    }
+
+    updateIngredient(key: string, ingredient: IngredientModel): Promise<void> {
+        return this.ingredientsRef.update(key, ingredient);
+    }
+
+    deleteIngredient(key: string) : Promise<void> {
+        return this.ingredientsRef.remove(key);
     }
 
 } 
