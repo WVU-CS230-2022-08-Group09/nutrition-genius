@@ -5,6 +5,7 @@
 }
 .heading{
      text-align: center;
+    
 }
 .slogan{
     text-align: center;
@@ -54,8 +55,9 @@
      border:10px solid transparent;
      color: rgb(0, 0, 0);
      Font-family: Montserrat;
-     padding:50px;
+     padding:70px;
      border-radius:50%;
+     
 }
  .card-circle .card-title{
     font-weight:600;
@@ -104,8 +106,10 @@
          z-index:0;
     }
      .card-circle{
-         width:400px;
-         height:400px;
+         width:410px;
+         height:410px;
+      
+         
     }
      .card-circle:nth-child(2){
          margin-left:-20px;
@@ -138,3 +142,7 @@
     }
 }
 
+.container-b{
+    padding:50px;
+    position: relative;
+}
