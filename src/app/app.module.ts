@@ -8,6 +8,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { ProfilePageComponent } from './profile-page/profile-page/profile-page.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { RecipeComponent } from './recipe/recipe.component';
+import { TreeGridModule } from '@syncfusion/ej2-angular-treegrid';
 import { GridModule, PagerModule, GroupService } from '@syncfusion/ej2-angular-grids';
 import { IngredientsComponent } from './ingredients/ingredients.component';
 import { AngularFireModule } from '@angular/fire/compat';
@@ -16,7 +17,6 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
-import { AuthService } from './services/shared/auth.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +39,7 @@ import { AuthService } from './services/shared/auth.service';
    AngularFireStorageModule,
    AngularFireDatabaseModule,
   ],
-  providers: [GroupService, AuthService],
+  providers: [GroupService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
