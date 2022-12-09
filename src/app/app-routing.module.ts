@@ -6,11 +6,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import {NavBarComponent} from './home-page/nav-bar/nav-bar.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { IngredientsComponent } from './ingredients/ingredients.component';
-import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
+import { SignUpPageComponent } from './registration/sign-up-page.component';
 import { ContactComponent } from './contact/contact.component';
-
-
-
 
 
 const routes: Routes = [
