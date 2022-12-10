@@ -31,7 +31,7 @@ input[type=text], select, textarea {
   
   .container {
     border-radius: 40px;
-    background-color: #fafafa;
+    background-color: rgba(85, 107, 47, 0.696);;
     padding: 40px;
   }
 
