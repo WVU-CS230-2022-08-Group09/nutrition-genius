@@ -1,0 +1,14 @@
+<!-- markup for grid to show meal information from the database
+    This is an editable grid -->
+
+    <!-- allowPaging="true" -->
+    <ejs-grid #grid [dataSource]='meals|async' [allowPaging]="true" [pageSettings]="pageSettings" [editSettings]="editSettings" [toolbar]="toolbar" 
+    (dataSourceChanged)='dataSourceChanged($event)' (dataStateChange)= 'dataStateChange($event)'>
+        <e-columns
+            <e-column field="name" ></e-column>
+            <e-column field="calories" ></e-column>
+            <e-column field="carbs" ></e-column>
+            <e-column field="fat" ></e-column>
+            <e-column field="protein" ></e-column>
+        </e-columns>
+    </ejs-grid>

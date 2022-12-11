@@ -18,6 +18,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
 import { FooterComponent } from './home-page/footer/footer.component';
 import { MainProfileComponent } from './profile-page/main-profile/main-profile.component';
+import { MealsComponent } from './meals/meals.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,8 @@ import { MainProfileComponent } from './profile-page/main-profile/main-profile.c
     RecipeComponent,
     IngredientsComponent,
     FooterComponent,
-    MainProfileComponent
+    MainProfileComponent,
+    MealsComponent
     
   ],
   imports: [
