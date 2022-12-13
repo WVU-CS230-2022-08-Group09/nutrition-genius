@@ -9,6 +9,8 @@ import { IngredientsComponent } from './ingredients/ingredients.component';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 import { ContactComponent } from './contact/contact.component';
 import { MainProfileComponent } from './profile-page/main-profile/main-profile.component';
+import { MealsComponent } from './meals/meals.component';
+
 
 
 
@@ -21,7 +23,9 @@ const routes: Routes = [
   {path : 'Ingredients', component:IngredientsComponent},
   {path : 'SignUpPage', component:SignUpPageComponent},
   {path : 'Contact', component:ContactComponent},
-  {path : 'Main', component:MainProfileComponent}
+  {path : 'Main', component:MainProfileComponent},
+  {path : 'Meals', component:MealsComponent }
+    
 
 ];
 

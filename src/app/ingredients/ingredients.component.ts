@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-// import { IngredientModel } from '../models/ingredient.model';
 import { IngredientsService } from './ingredients.service';
 import { GridComponent, EditService, PageService, ToolbarService, PageSettingsModel } from '@syncfusion/ej2-angular-grids';
 import { DataStateChangeEventArgs, DataSourceChangedEventArgs } from '@syncfusion/ej2-angular-grids';
@@ -10,7 +9,7 @@ import { IngredientModel } from '../models/ingredient.model';
   selector: 'app-ingredients',
   templateUrl: './ingredients.component.html',
   styleUrls: ['./ingredients.component.css'],
-  providers: [ToolbarService, EditService, PageService]
+  providers: [ToolbarService, EditService] 
 })
 export class IngredientsComponent implements OnInit {
 
@@ -26,57 +25,42 @@ export class IngredientsComponent implements OnInit {
   constructor(private ingredientsService: IngredientsService) {
     this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Dialog' };
     this.toolbar = ['Add', 'Edit', 'Delete'];
-    this.ingredients = ingredientsService;   // ingredientsService.execute({ take : 25});
+    this.ingredients = ingredientsService;
     this.state = { skip: 0, take: 10 };
-    this.pageSettings = { pageSize: 10};
+    this.pageSettings = { pageSize: 10 };
   }
 
   ngOnInit(): void {
 
     this.ingredientsService.execute(this.state);
-
-    // this works to add ingredients through the service
-    // var testObject : IngredientModel = {
-    //   name : "test_2",
-    //   calories : 222,
-    //   carbs : 2,
-    //   fat: 22,
-    //   protein : 222
-    // };
-    // this.ingredientsService.addIngredient(testObject);
   }
 
   // Method that handles state changes (paging, sorting, etc.)
   public dataStateChange(state: DataStateChangeEventArgs): void {
-    
     this.ingredientsService.execute(state);
   }
 
   // Method that handles data changes in the grid
   public dataSourceChanged(state: DataSourceChangedEventArgs): void {
-
-    console.log(state);
     if (state.action === 'add') {
-
-      this.ingredientsService.addIngredient(state.data as IngredientModel);
-
-      // this.ingredientsService.addIngredient(state.data).subscribe(() => {
-      //     state.endEdit();
-      // });
+      // Add new record to the database
+      this.ingredientsService.addData(state.data as IngredientModel).subscribe(() => {
+          state.endEdit?.();
+      });
 
     } else if (state.action === 'edit') {
-      // this.crudService.updateRecord(state).subscribe(() => {
-      //     state.endEdit();
-      // }, (e) => {
-      //     this.grid.closeEdit();
-      // }
-      // );
+      // edit existing record using the key to identify the row to edit
+        this.ingredientsService.updateData((state.data as IngredientModel).key as string, state.data as IngredientModel).subscribe(() => {
+          state.endEdit?.();
+      } , () => {
+          this.grid.closeEdit();
+      });
     } else if (state.requestType === 'delete') {
-      // this.crudService.deleteRecord(state).subscribe(() => {
-      //     state.endEdit();
-      // });
+      // delete record based off of the key
+      var key = (state.data as IngredientModel[])[0].key as string;
+      this.ingredientsService.deleteData(key).subscribe(() => {
+          state.endEdit?.();
+      });
     }
   }
-
-
 }
