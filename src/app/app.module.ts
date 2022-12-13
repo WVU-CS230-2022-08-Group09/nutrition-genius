@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +20,7 @@ import { environment } from '../environments/environment';
 import { FooterComponent } from './home-page/footer/footer.component';
 import { MainProfileComponent } from './profile-page/main-profile/main-profile.component';
 import { MealsComponent } from './meals/meals.component';
+import { SignUpPageComponent } from './sign-up-page/sign-up-page/sign-up-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +32,8 @@ import { MealsComponent } from './meals/meals.component';
     IngredientsComponent,
     FooterComponent,
     MainProfileComponent,
-    MealsComponent
+    MealsComponent,
+    SignUpPageComponent
     
   ],
   imports: [
@@ -43,6 +46,7 @@ import { MealsComponent } from './meals/meals.component';
    AngularFirestoreModule,
    AngularFireStorageModule,
    AngularFireDatabaseModule,
+   FormsModule
   ],
   providers: [GroupService],
   bootstrap: [AppComponent]
