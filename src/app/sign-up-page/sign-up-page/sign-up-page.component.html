@@ -1,24 +1,52 @@
-<div class="row">
-    <div class="col-12">
-        <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
-           
-            <div class="input-group mb-3">
-                <span class="input-group-text">Email:</span>
-                <input type="text" class="form-control" placeholder="Email"
-                ngMode name="email"
-                required email>
+<div class="container">
+    <div class ="card text-center" style="width: 50rem">
+        <h5 class="card-title">Welcome To Nutrition Genius</h5>
+        <p class="card-text1">We are so excited for you to start your journey.</p>
+        <p class="card-text2">Enter the following information to get started today!</p>
+        <div class="row">
+            <div class="col-12">
+                <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+<!--                    
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Name:</span>
+                        <input type="text" class="form-control" placeholder="Name"
+                        ngMode name="name"
+                        required name>
+                    </div> -->
+                    <div class="row">
+                        <div class="col mb-3">
+                        <span class="input-group-text">First Name:</span>
+                          <input type="text" class="form-control" placeholder="First name">
+                        </div>
+                        <div class="col">
+                            <span class="input-group-text">First Name:</span>
+                          <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+                        </div>
+                      </div>
+    
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Email:</span>
+                        <input type="text" class="form-control" placeholder="Email"
+                        ngMode name="email"
+                        required email>
+                    </div>
+          
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Password:</span>
+                        <input type="password" class="form-control" placeholder="Password"
+                        ngMode name="password"
+                        required password>
+                    </div>
+                    
+                    <div class="d-grid gap-2 col-2 mx-auto">
+                        <button class="btn btn-dark" type="submit" [disabled] = "!authForm.valid" (click)="buttonClicked='SignUp'">
+                            Get Started
+                        </button>
+                    </div>
+                    
+                </form>
             </div>
-  
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Password:</span>
-                <input type="text" class="form-control" placeholder="Password"
-                ngMode name="password"
-                required password>
-            </div>
-            
-            <button class="btn btn-dark" type="submit" [disabled] = "!authForm.valid" (click)="buttonClicked='SignUp'">
-                Signup
-            </button>
-        </form>
+          </div>
     </div>
-  </div>
+    
+</div>
