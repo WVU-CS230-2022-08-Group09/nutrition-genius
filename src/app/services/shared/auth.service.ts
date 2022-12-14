@@ -1,41 +1,53 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { environment } from "src/environments/environment";
 import { AuthResponse } from "./auth.response";
-
+import * as firebase from "firebase/compat";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthService{
-  baseUrl: string = "https://identitytoolkit.googleapis.com/v1/accounts"
-  signUp: string = "signInWithCustomToken"
-  signIn: string = "signInWithPassword"
+  
+  public signup(email:string, password:string){
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
+      //Signed In
+      const user = userCredential.user;
+      onAuthStateChanged(auth, (user) => {
+        if(user){
+          const uid = user.uid;
+        }
+      })
+    })
 
-  public constructor(private http:HttpClient){
-    
-  }
-
-  public signup(name:string, email:string, password:string){
-    const requestBody = {
-      "name":name,
-      "email": email,
-      "password": password,
-      "returnSecureToken": true
-    }
-    return this.http.post<AuthResponse>(this.baseUrl + ':' + this.signUp + '?' + 'key=' + environment.firebase.apiKey, requestBody);
+    //Error handling
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    })
   }
 
   public signin(email: string, password:string){
-    const requestBody={
-      "email":email,
-      "password":password,
-      "returnSecureToken": true,
-    }
-  
-    return this.http.post<AuthResponse>(this.baseUrl + ':' + this.signIn + '?' + 'key=' + environment.firebase.apiKey, requestBody);
-  
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password).then((userCredential) =>{
+      //Signed In
+      const user = userCredential.user;
+      onAuthStateChanged(auth, (user) => {
+        if(user){
+          //User is signed in
+          const uid = user.uid;
+        }
+        else{
+          //User is signed out
+        }
+      })
+      
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    })
   }
-
 }
