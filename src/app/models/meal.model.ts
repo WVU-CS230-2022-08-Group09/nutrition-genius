@@ -1,8 +1,10 @@
-export class MealModel { //extends Observable<IngredientModel> {
-    name!: string;
+import { BaseObject } from "./base.object";
+
+export class MealModel extends BaseObject { //extends Observable<IngredientModel> {
     calories!: number;
     carbs!: number;
     fat!: number;
     protein!: number;
+    override listSource = "meals";
 
 }
