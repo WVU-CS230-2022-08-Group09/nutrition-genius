@@ -1,26 +1,43 @@
-# NutritionGenius
+Nutrition Genius
+========
 
-Welcome to Nutrition Genius! This webapp that aims to provide the user with accurate nutritional information and recipes for users. For more information please follow the documentation below. For bugs and errors, please submit a bug report to jlo0015@mix.wvu.edu.
+Welcome to Nutrition Genius! This is a small-group developed webapp aimed at providing users with accurate, up-to-date nutritional information!
 
-## Code scaffolding
+Features
+--------
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Track your calories through the calorie tracker!
+- Register and track your meals!
+- View and add recipes!
+- Easy to use ingredient keeper!
 
-## Build
+Tutorial
+----------
+- Webapp Link: 
+To begin, the user will have to sign up. Once registered, the user can access and set up their custom profile. Through this, the user can start tracking various aspects of their meals and ingredients, as well as access the user-added recipes. 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Contribute
+----------
 
-## Running unit tests
+- Issue Tracker: https://github.com/WVU-CS230-2022-08-Group09/nutrition-genius/issues
+- Source Code: https://github.com/WVU-CS230-2022-08-Group09/nutrition-genius
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Support
+-------
 
-## Running end-to-end tests
+If you are having issues, please let us know.
+We have a mailing list located at: 
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Credits
+-------
 
-## Further help
+- 
+- 
+- Jacob Ochsenbein: Authentication & Documentation
+- 
+- 
+- 
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-# nutrition-genius
-# nutrition-genius
-# nutrition-genius
+License
+-------
+
