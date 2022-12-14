@@ -1,10 +1,6 @@
 # NutritionGenius
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.0.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Welcome to Nutrition Genius! This webapp that aims to provide the user with accurate nutritional information and recipes for users. For more information please follow the documentation below. For bugs and errors, please submit a bug report to jlo0015@mix.wvu.edu.
 
 ## Code scaffolding
 
