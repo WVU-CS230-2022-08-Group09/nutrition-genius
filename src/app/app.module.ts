@@ -23,6 +23,7 @@ import { MealsComponent } from './meals/meals.component';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page/sign-up-page.component';
 import { MealDetailComponent } from './meals/meal-detail/meal-detail.component';
 import { MealRecipeComponent } from './meals/meal-recipe/meal-recipe.component';
+import { RecipeIngredientComponent } from './recipe/recipe-ingredient.component';
 
 @NgModule({
   declarations: [
@@ -38,8 +39,8 @@ import { MealRecipeComponent } from './meals/meal-recipe/meal-recipe.component';
     MealsComponent,
     SignUpPageComponent,
     MealDetailComponent,
-    MealRecipeComponent
-    
+    MealRecipeComponent,
+    RecipeIngredientComponent
   ],
   imports: [
     BrowserModule,

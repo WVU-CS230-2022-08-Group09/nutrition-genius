@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IngredientsService } from './ingredients.service';
 import { GridComponent, EditService, ToolbarService, PageSettingsModel } from '@syncfusion/ej2-angular-grids';
 import { DataStateChangeEventArgs, DataSourceChangedEventArgs } from '@syncfusion/ej2-angular-grids';
 import { Observable } from 'rxjs';
+import { IngredientsService } from './ingredients.service';
 import { IngredientModel } from '../models/ingredient.model';
 
 @Component({

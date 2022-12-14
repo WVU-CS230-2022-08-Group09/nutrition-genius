@@ -10,7 +10,7 @@ import { ContactComponent } from './contact/contact.component';
 import { MainProfileComponent } from './profile-page/main-profile/main-profile.component';
 import { MealsComponent } from './meals/meals.component';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page/sign-up-page.component';
-
+import { RecipeIngredientComponent } from './recipe/recipe-ingredient.component';
 
 
 
@@ -24,8 +24,8 @@ const routes: Routes = [
   {path : 'SignUpPage', component:SignUpPageComponent},
   {path : 'Contact', component:ContactComponent},
   {path : 'Main', component:MainProfileComponent},
-  {path : 'Meals', component:MealsComponent }
-    
+  {path : 'Meals', component:MealsComponent },
+  {path : 'RecipeIngredient', component:RecipeIngredientComponent}
 
 ];
 

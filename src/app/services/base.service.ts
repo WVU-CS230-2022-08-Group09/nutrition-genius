@@ -39,6 +39,10 @@ export abstract class BaseService<T extends BaseObject> extends Subject<DataStat
             )
     }
 
+    getList(listName: string): any {
+        return this._db.list(listName) as AngularFireList<BaseObject>;
+    }
+
     addData(newObject: any): any {
         // push new ingredient to the database
         return this.dataRef.push(newObject);

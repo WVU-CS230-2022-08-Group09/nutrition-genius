@@ -1,0 +1,14 @@
+<!-- markup for grid to show ingredient information from the database
+    This is an editable grid -->
+
+    <ejs-grid #grid [dataSource]='recipeIngredients | async' [editSettings]="editSettings" [toolbar]="toolbar" 
+    (dataSourceChanged)='dataSourceChanged($event)' (dataStateChange)= 'dataStateChange($event)'>
+        <e-columns>
+            <e-column field="key" ></e-column>
+            <e-column field="recipe" ></e-column>
+            <!-- <e-column field="ingredient" foreignKeyValue="name" [dataSource]="ingredientData" ></e-column> -->
+            <e-column field="amount" ></e-column>
+        </e-columns>
+    </ejs-grid>
+    
+    
