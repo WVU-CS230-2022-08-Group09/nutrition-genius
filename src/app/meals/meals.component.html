@@ -2,7 +2,7 @@
     This is an editable grid -->
 
     <!-- allowPaging="true" -->
-    <ejs-grid #grid [dataSource]='meals|async' [allowPaging]="true" [pageSettings]="pageSettings" [editSettings]="editSettings" [toolbar]="toolbar" 
+    <ejs-grid #grid [dataSource]='meal|async' [allowPaging]="true" [pageSettings]="pageSettings" [editSettings]="editSettings" [toolbar]="toolbar" 
     (dataSourceChanged)='dataSourceChanged($event)' (dataStateChange)= 'dataStateChange($event)'>
         <e-columns>
             <e-column field="name" ></e-column>

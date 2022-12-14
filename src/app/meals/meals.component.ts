@@ -1,19 +1,19 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MealModel } from "../models/meal.model";
-import { GridComponent, EditService, PageService, ToolbarService, PageSettingsModel } from '@syncfusion/ej2-angular-grids';
-import { MealService } from "./meal.service";
-import { Observable, Subject, map } from "rxjs";
-import { AngularFireDatabase, AngularFireList } from "@angular/fire/compat/database";
+import { MealService } from './meal.service';
+import { GridComponent, EditService, ToolbarService, PageSettingsModel } from '@syncfusion/ej2-angular-grids';
 import { DataStateChangeEventArgs, DataSourceChangedEventArgs } from '@syncfusion/ej2-angular-grids';
+import { Observable } from 'rxjs';
+import { MealModel } from '../models/meal.model';
 
 @Component({
   selector: 'app-meals',
   templateUrl: './meals.component.html',
-  styleUrls: ['./meals.component.css']
+  styleUrls: ['./meals.component.css'],
+  providers: [ToolbarService, EditService] 
 })
 export class MealsComponent implements OnInit {
 
-  public meals: Observable<DataStateChangeEventArgs>;
+  public meal: Observable<DataStateChangeEventArgs>;
   public state: DataStateChangeEventArgs;
   public editSettings: Object;
   public toolbar: string[];
@@ -25,9 +25,9 @@ export class MealsComponent implements OnInit {
   constructor(private mealService: MealService) {
     this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Dialog' };
     this.toolbar = ['Add', 'Edit', 'Delete'];
-    this.meals = mealService;   // ingredientsService.execute({ take : 25});
+    this.meal = mealService;
     this.state = { skip: 0, take: 10 };
-    this.pageSettings = { pageSize: 10};
+    this.pageSettings = { pageSize: 10 };
   }
 
   ngOnInit(): void {
@@ -37,36 +37,30 @@ export class MealsComponent implements OnInit {
 
   // Method that handles state changes (paging, sorting, etc.)
   public dataStateChange(state: DataStateChangeEventArgs): void {
-    
     this.mealService.execute(state);
   }
 
   // Method that handles data changes in the grid
   public dataSourceChanged(state: DataSourceChangedEventArgs): void {
-
-    console.log(state);
     if (state.action === 'add') {
-
-      this.mealService.addMeal(state.data as MealModel);
-
-      // this.ingredientsService.addIngredient(state.data).subscribe(() => {
-      //     state.endEdit();
-      // });
+      // Add new record to the database
+      this.mealService.addData(state.data as MealModel).subscribe(() => {
+          state.endEdit?.();
+      });
 
     } else if (state.action === 'edit') {
-      // this.crudService.updateRecord(state).subscribe(() => {
-      //     state.endEdit();
-      // }, (e) => {
-      //     this.grid.closeEdit();
-      // }
-      // );
+      // edit existing record using the key to identify the row to edit
+        this.mealService.updateData((state.data as MealModel).key as string, state.data as MealModel).subscribe(() => {
+          state.endEdit?.();
+      } , () => {
+          this.grid.closeEdit();
+      });
     } else if (state.requestType === 'delete') {
-      // this.crudService.deleteRecord(state).subscribe(() => {
-      //     state.endEdit();
-      // });
+      // delete record based off of the key
+      var key = (state.data as MealModel[])[0].key as string;
+      this.mealService.deleteData(key).subscribe(() => {
+          state.endEdit?.();
+      });
     }
   }
-
-
 }
-

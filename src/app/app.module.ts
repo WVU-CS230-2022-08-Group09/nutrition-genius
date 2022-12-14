@@ -21,6 +21,9 @@ import { FooterComponent } from './home-page/footer/footer.component';
 import { MainProfileComponent } from './profile-page/main-profile/main-profile.component';
 import { MealsComponent } from './meals/meals.component';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page/sign-up-page.component';
+import { MealDetailComponent } from './meals/meal-detail/meal-detail.component';
+import { MealRecipeComponent } from './meals/meal-recipe/meal-recipe.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +36,9 @@ import { SignUpPageComponent } from './sign-up-page/sign-up-page/sign-up-page.co
     FooterComponent,
     MainProfileComponent,
     MealsComponent,
-    SignUpPageComponent
+    SignUpPageComponent,
+    MealDetailComponent,
+    MealRecipeComponent
     
   ],
   imports: [
