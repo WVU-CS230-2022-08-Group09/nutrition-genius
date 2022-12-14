@@ -33,16 +33,6 @@ export class MealsComponent implements OnInit {
   ngOnInit(): void {
 
     this.mealService.execute(this.state);
-
-    // this works to add ingredients through the service
-    // var testObject : IngredientModel = {
-    //   name : "test_2",
-    //   calories : 222,
-    //   carbs : 2,
-    //   fat: 22,
-    //   protein : 222
-    // };
-    // this.ingredientsService.addIngredient(testObject);
   }
 
   // Method that handles state changes (paging, sorting, etc.)

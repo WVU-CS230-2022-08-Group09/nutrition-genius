@@ -1,12 +1,9 @@
-import { Observable } from "rxjs";
+import { BaseObject } from "./base.object";
 
-
-export class IngredientModel { //extends Observable<IngredientModel> {
-    key!: string;
-    name!: string;
+export class IngredientModel extends BaseObject { 
     calories!: number;
     carbs!: number;
     fat!: number;
     protein!: number;
-
+    override listSource = "ingredients";
 }
