@@ -1,10 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { GridComponent, EditService, ToolbarService, PageSettingsModel, IEditCell, Column } from '@syncfusion/ej2-angular-grids';
 import { DataStateChangeEventArgs, DataSourceChangedEventArgs } from '@syncfusion/ej2-angular-grids';
-import { Observable } from 'rxjs';
+import { Observable, Subject, map, pipe } from 'rxjs';
 import { ForeignKeyService } from '@syncfusion/ej2-angular-grids';
 import { RecipeIngredientService } from './recipe-Ingredient.service';
 import { RecipeIngredientModel } from '../models/recipeIngredient.model';
+import { ChangeDetectionStrategy } from '@angular/compiler';
+import { LegendItemStyle } from '@syncfusion/ej2-angular-charts';
 // import { IngredientsService } from '../ingredients/ingredients.service';
 
 @Component({
@@ -20,7 +22,7 @@ export class RecipeIngredientComponent implements OnInit {
   public editSettings: Object;
   public toolbar: string[];
   public pageSettings: PageSettingsModel;
-  public ingredientData!: any;
+  public ingredientData!: RecipeIngredientModel[];
   
 
   @ViewChild('grid')
@@ -41,33 +43,15 @@ export class RecipeIngredientComponent implements OnInit {
     this.pageSettings = { pageSize: 10 };
   }
 
-//   public edit: IEditCell = {
-//     create: () => { // to create input element
-//         return createElement('input');
-//     },
-//     read: () => { // return edited value to update data source
-//         const ingrId = 'EmployeeID';
-//         const value = new DataManager(this.ingredientData).executeLocal(new Query().where('FirstName', 'equal', this.autoComplete.value));
-//         return value; //.length && value[0][key]; // to convert foreign key value to local value.
-//     },
-//     destroy: () => { // to destroy the custom component.
-//         this.autoComplete.destroy();
-//     },
-//     write: (args: { rowData: object, column: Column, foreignKeyData: object,
-//          element: HTMLTableCellElement }) => { // to show the value for date picker
-//         this.autoComplete = new AutoComplete({
-//             dataSource: this.ingredientData,
-//             fields: { value: args.column.foreignKeyValue },
-//             value: 1 // args.foreignKeyData[0][args.column.foreignKeyValue]
-//         });
-//         this.autoComplete.appendTo(args.element);
-//     }
-// }
-
   ngOnInit(): void {
 
     this.recipeIngredientService.execute(this.state);
-    this.ingredientData = this.recipeIngredientService.getList("recipeIngredients");
+    //this.ingredientData = 
+    this.recipeIngredientService.getList("recipeIngredients").subscribe(p => 
+      // console.log(p));
+      this.ingredientData = p.result.val());
+    //debugger;
+    console.log(this.ingredientData);
   }
 
   // Method that handles state changes (paging, sorting, etc.)
@@ -99,3 +83,4 @@ export class RecipeIngredientComponent implements OnInit {
     }
   }
 }
+

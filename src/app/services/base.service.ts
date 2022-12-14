@@ -39,8 +39,18 @@ export abstract class BaseService<T extends BaseObject> extends Subject<DataStat
             )
     }
 
-    getList(listName: string): any {
-        return this._db.list(listName) as AngularFireList<BaseObject>;
+    getList(listName: string): Observable<any> {
+        return this._db.list(listName).snapshotChanges()
+        .pipe(map((changes: any) => ({
+            count: changes.length,
+            result: changes.map((c: any) => ({
+                ...(c.payload.val()),
+                key: c.payload.key
+            }))
+        }))
+
+        )
+
     }
 
     addData(newObject: any): any {
