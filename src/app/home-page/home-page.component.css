@@ -53,7 +53,7 @@
      background:rgba(85, 107, 47, 0.626);    
      border:10px solid transparent;
      color: rgb(0, 0, 0);
-     Font-family: Montserrat;
+     font-family: Montserrat;
      padding:70px;
      border-radius:50%;
      
@@ -79,7 +79,7 @@
      text-transform:uppercase;
      padding:5px 30px;    
      border-radius:0px;
-     Font-weight:600;
+     font-weight:600;
 }
 .card-circle .btn,.card-circle .card-icon i,.card-circle{
    transition: all ease-in-out 0.2s;
