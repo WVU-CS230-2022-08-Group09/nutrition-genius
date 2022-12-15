@@ -24,7 +24,7 @@ Features
 
 Tutorial
 ----------
-- Website Link: 
+- [Go to Nutrition Genius](https://nutrition-genius.web.app/) 
 
 - Registration
   - To begin, the user will have to sign up. Once registered, the user can access and set up their custom profile. Through this, the user can start tracking various aspects of their meals and ingredients, as well as access the user-added recipes. 
