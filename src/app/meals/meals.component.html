@@ -5,7 +5,8 @@
     <ejs-grid #grid [dataSource]='meal|async' [allowPaging]="true" [pageSettings]="pageSettings" [editSettings]="editSettings" [toolbar]="toolbar" 
     (dataSourceChanged)='dataSourceChanged($event)' (dataStateChange)= 'dataStateChange($event)'>
         <e-columns>
-            <e-column field="name" ></e-column>
+            <e-column field="recipe" ></e-column>
+            <e-column field="meal_time"></e-column>
             <e-column field="calories" ></e-column>
             <e-column field="carbs" ></e-column>
             <e-column field="fat" ></e-column>

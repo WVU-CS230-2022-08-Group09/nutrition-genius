@@ -1,3 +1,7 @@
+//Component: Ingredient Model
+//Contributor(s):
+//Summary: 
+
 import { BaseObject } from "./base.object";
 
 export class IngredientModel extends BaseObject { 

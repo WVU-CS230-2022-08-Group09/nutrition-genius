@@ -11,7 +11,6 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { GridModule, PagerModule, GroupService } from '@syncfusion/ej2-angular-grids';
 import { IngredientsComponent } from './ingredients/ingredients.component';
-import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
@@ -24,6 +23,7 @@ import { SignUpPageComponent } from './sign-up-page/sign-up-page/sign-up-page.co
 import { MealDetailComponent } from './meals/meal-detail/meal-detail.component';
 import { MealRecipeComponent } from './meals/meal-recipe/meal-recipe.component';
 import { RecipeIngredientComponent } from './recipe/recipe-ingredient.component';
+import { ReactiveFormsModule } from '@angular/forms';
 import { SettingsComponent } from './profile-page/main-profile/settings/settings.component';
 import { GoalsComponent } from './profile-page/main-profile/goals/goals.component';
 import { CheckInComponent } from './profile-page/main-profile/check-in/check-in.component';
@@ -53,12 +53,12 @@ import { CheckInComponent } from './profile-page/main-profile/check-in/check-in.
     AppRoutingModule,
     GridModule, PagerModule,
    HttpClientModule,
-   AngularFireModule.initializeApp(environment.firebase),
    AngularFireAuthModule,
    AngularFirestoreModule,
    AngularFireStorageModule,
    AngularFireDatabaseModule,
-   FormsModule
+   FormsModule,
+   ReactiveFormsModule
   ],
   providers: [GroupService],
   bootstrap: [AppComponent]

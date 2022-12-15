@@ -1,9 +1,12 @@
+//Module: App Routing
+//Contributor(s): Aishat Banire, Makayla Davis, Colby Gallaher, Collin Lloyd, Steve Lough, Jacob Ochsenbein
+//Summary: Main routing module for the entire webapp, provides routing to all components
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ProfilePageComponent } from './profile-page/profile-page/profile-page.component';
 import { AboutUsComponent } from './about-us/about-us.component';
-import {NavBarComponent} from './home-page/nav-bar/nav-bar.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { IngredientsComponent } from './ingredients/ingredients.component';
 import { ContactComponent } from './contact/contact.component';
@@ -13,9 +16,7 @@ import { SignUpPageComponent } from './sign-up-page/sign-up-page/sign-up-page.co
 import { RecipeIngredientComponent } from './recipe/recipe-ingredient.component';
 import { CheckInComponent } from './profile-page/main-profile/check-in/check-in.component';
 import { GoalsComponent } from './profile-page/main-profile/goals/goals.component';
-
-
-
+//Routing names
 const routes: Routes = [
   {path : '', component:HomePageComponent},
   {path : 'Profile', component:ProfilePageComponent},
@@ -31,9 +32,11 @@ const routes: Routes = [
   {path : 'Goals', component:GoalsComponent}
 ];
 
-
+//NgModule wrapping
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
+//Export
 export class AppRoutingModule { }

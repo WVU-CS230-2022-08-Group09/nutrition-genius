@@ -1,7 +1,18 @@
 Nutrition Genius
 ========
 
-Welcome to Nutrition Genius! This is a small-group developed webapp aimed at providing users with accurate, up-to-date nutritional information!
+Welcome to Nutrition Genius! This is a small group developed webapp aimed at providing users with accurate, up-to-date nutritional information!
+
+
+
+Framework
+--------
+
+Built with
+  - [Typescript](https://www.typescriptlang.org/)
+  - [Javascript](https://www.javascript.com/)
+  - [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference)
+  - [HTML](https://html.com/)
 
 Features
 --------
@@ -13,8 +24,25 @@ Features
 
 Tutorial
 ----------
-- Webapp Link: 
-To begin, the user will have to sign up. Once registered, the user can access and set up their custom profile. Through this, the user can start tracking various aspects of their meals and ingredients, as well as access the user-added recipes. 
+- [Go to Nutrition Genius](https://nutrition-genius.web.app/) 
+
+- Registration
+  - To begin, the user will have to sign up. Once registered, the user can access and set up their custom profile. Through this, the user can start tracking various aspects of their meals and ingredients, as well as access the user-added recipes. 
+
+- For Meal and Ingredient Trackers
+  - This webapp utilizes the Syncfusion API to document and track meals and ingredients. To add data, all the user has to do is select "Add new" and input the information. Additionally, users can edit and remove said data, meaining that the trackers are fully editabled.
+
+- For Recipes
+  - With both community and personal recipe additions, users are able to view nutritional information for recipes in a grid similar to the trackers. Many recipes also feature links to the full recipe!
+
+APIs & References
+----------
+
+[Syncfusion Documentation](https://ej2.syncfusion.com/angular/documentation/introduction/)
+
+[Firebase Documentation](https://firebase.google.com/docs)
+
+[Angular Documentation](https://angular.io/docs)
 
 Contribute
 ----------
@@ -28,16 +56,24 @@ Support
 If you are having issues, please let us know.
 We have a mailing list located at: 
 
+Known Issues
+-------
+
+- Some parts of the website are unfinished.
+- No Multifactor Authentication.
+
 Credits
 -------
 
-- 
-- 
-- Jacob Ochsenbein: Authentication & Documentation
-- 
-- 
-- 
+- Aishat Banire
+- Makayla Davis
+- Colby Gallaher
+- Collin Lloyd
+- Steve Lough
+- Jacob Ochsenbein
+
 
 License
 -------
 
+MIT © Group 9 WVU

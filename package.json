@@ -23,6 +23,7 @@
     "@syncfusion/ej2-angular-charts": "*",
     "@syncfusion/ej2-angular-gantt": "*",
     "@syncfusion/ej2-angular-grids": "*",
+    "@syncfusion/ej2-angular-popups": "^20.3.60",
     "@syncfusion/ej2-angular-schedule": "*",
     "@syncfusion/ej2-material-theme": "*",
     "bootstrap": "^5.2.2",
