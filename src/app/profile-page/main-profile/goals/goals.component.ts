@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-main-profile',
+  selector: 'app-main-profile-goals',
   templateUrl: './goals.component.html',
   styleUrls: ['./goals.component.css']
 })
