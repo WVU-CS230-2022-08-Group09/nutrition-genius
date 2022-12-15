@@ -24,6 +24,7 @@ import { SignUpPageComponent } from './sign-up-page/sign-up-page/sign-up-page.co
 import { MealDetailComponent } from './meals/meal-detail/meal-detail.component';
 import { MealRecipeComponent } from './meals/meal-recipe/meal-recipe.component';
 import { RecipeIngredientComponent } from './recipe/recipe-ingredient.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { RecipeIngredientComponent } from './recipe/recipe-ingredient.component'
    AngularFirestoreModule,
    AngularFireStorageModule,
    AngularFireDatabaseModule,
-   FormsModule
+   FormsModule,
+   ReactiveFormsModule
   ],
   providers: [GroupService],
   bootstrap: [AppComponent]

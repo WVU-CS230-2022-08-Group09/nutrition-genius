@@ -1,5 +1,3 @@
-<!-- markup for grid to show ingredient information from the database
-    This is an editable grid -->
 
     <ejs-grid #grid [dataSource]='recipeIngredients | async' [editSettings]="editSettings" [toolbar]="toolbar" 
     (dataSourceChanged)='dataSourceChanged($event)' (dataStateChange)= 'dataStateChange($event)'>
