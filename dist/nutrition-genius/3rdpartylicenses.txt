@@ -102,6 +102,12 @@ Apache-2.0
 @syncfusion/ej2-angular-base
 SEE LICENSE IN license
 
+@syncfusion/ej2-angular-buttons
+SEE LICENSE IN license
+
+@syncfusion/ej2-angular-dropdowns
+SEE LICENSE IN license
+
 @syncfusion/ej2-angular-grids
 SEE LICENSE IN license
 
@@ -159,6 +165,8 @@ firebase/app
 
 firebase/app-check
 
+firebase/auth
+
 firebase/compat/app
 
 firebase/compat/auth
@@ -168,6 +176,8 @@ firebase/compat/database
 firebase/compat/firestore
 
 firebase/compat/storage
+
+firebase/database
 
 firebase/messaging
 

@@ -1,5 +1,5 @@
 //Injectable: Ingredients Service
-//Contributor(s):
+//Contributor(s): Steve Lough
 //Summary: 
 
 import { Injectable } from "@angular/core";

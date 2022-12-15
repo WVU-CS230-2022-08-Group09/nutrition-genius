@@ -1,32 +1,27 @@
 //Component: Recipe
-//Contributor(s):
-//Summary: 
+//Contributor(s): Collin, Steve
+//Summary: This is a grid that contains an edit form where the ingredients can be added to the recipe
 
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { GroupSettings, GroupSettingsModel } from '@syncfusion/ej2-angular-grids';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { GridComponent, EditService, ToolbarService, PageSettingsModel, IEditCell, Column, SaveEventArgs, DialogEditEventArgs } from '@syncfusion/ej2-angular-grids';
 import { DataStateChangeEventArgs, DataSourceChangedEventArgs } from '@syncfusion/ej2-angular-grids';
-import { Observable, Subject, map, pipe } from 'rxjs';
-import { ForeignKeyService } from '@syncfusion/ej2-angular-grids';
-import { ChangeDetectionStrategy } from '@angular/compiler';
-import { LegendItemStyle } from '@syncfusion/ej2-angular-charts';
+import { Observable } from 'rxjs';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Dialog } from '@syncfusion/ej2-angular-popups';
-import { Browser } from '@syncfusion/ej2-base';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
 import { RecipeService } from './recipe.service';
+import { RecipeIngredientService } from './recipe-Ingredient.service';
+import { RecipeIngredientModel } from '../models/recipeIngredient.model';
 import { RecipeModel } from '../models/recipe.model';
-import { PageService } from '@syncfusion/ej2-angular-grids';
 
-
-
+// component declarations
 @Component({
   selector: 'app-recipe',
   templateUrl: './recipe.component.html',
   styleUrls: ['./recipe.component.css'],
   providers: [ToolbarService, EditService]
 })
+
+// class properties
 export class RecipeComponent implements OnInit {
   public recipes: Observable<DataStateChangeEventArgs>;
   public state!: DataStateChangeEventArgs;
@@ -35,136 +30,98 @@ export class RecipeComponent implements OnInit {
   public pageSettings: PageSettingsModel;
   public ingredientData?: RecipeModel[];
   public submitClicked: boolean = false;
-  // public args!: string;
-  public orderData!: IOrderModel;
+  public groupOptions: Object;
 
   @ViewChild('grid')
   public grid?: GridComponent;
   orderForm: any;
   data!: Object[];
-  
 
-  constructor(private recipeService: RecipeService) {
+// constructor where services are injected
+  constructor(private recipeService: RecipeService, private recipeIngredientService: RecipeIngredientService) {
 
+      // set the values for the grid operators and the datasource
     this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Dialog' };
-    this.toolbar = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
+    this.toolbar = ['Add', 'Edit', 'Delete'];
     this.recipes = recipeService;
     this.state = { skip: 0, take: 10 };
     this.pageSettings = { pageSize: 10 };
+    this.groupOptions = { showGroupedColumn: false };
   }
 
   ngOnInit(): void {
-
+    // initialize the grid datasource
     this.recipeService.execute(this.state);
-    
   }
 
 
-  // Method that handles state changes (paging, sorting, etc.)
-  public dataStateChange(state: DataStateChangeEventArgs): void {
-    this.recipeService.execute(state);
-  }
-
-  // Method that handles data changes in the grid
-  public dataSourceChanged(state: DataSourceChangedEventArgs): void {
-    if (state.action === 'add') {
-      // Add new record to the database
-      this.recipeService.addData(state.data as RecipeModel).subscribe(() => {
-        state.endEdit?.();
-      });
-
-    } else if (state.action === 'edit') {
-      // edit existing record using the key to identify the row to edit
-      this.recipeService.updateData((state.data as RecipeModel).key as string, state.data as RecipeModel).subscribe(() => {
-        state.endEdit?.();
-      }, () => {
-        this.grid!.closeEdit();
-      });
-    } else if (state.requestType === 'delete') {
-      // delete record based off of the key
-      var key = (state.data as RecipeModel[])[0].key as string;
-      this.recipeService.deleteData(key).subscribe(() => {
-        state.endEdit?.();
-      });
-    }
-  }
-
-  createFormGroup(data: RecipeModel): FormGroup {
+// this method will build out the form for the edit
+  createFormGroup(data: RecipeModel, ingredients?: RecipeIngredientModel[]): FormGroup {
     return new FormGroup({
+      name: new FormControl(data.name, Validators.required),
       description: new FormControl(data.description, Validators.required),
       ethnicity: new FormControl(data.ethnicity),
-      ingredients: new FormControl(data.ingredients, Validators.required),
+      ingredients: new FormControl(data.ingredients),
       instructions: new FormControl(data.instructions),
       meal_time: new FormControl(data.meal_time)
-
     });
   }
 
-  dateValidator() {
-    return (control: FormControl): null | Object => {
-      return control.value && control.value.getFullYear &&
-        (1900 <= control.value.getFullYear() && control.value.getFullYear() <= 2099) ? null : { OrderDate: { value: control.value } };
-    }
-  }
-
+  // action begin is where different actions are caught for different operations
   actionBegin(args: SaveEventArgs): void {
     if (args.requestType === 'beginEdit' || args.requestType === 'add') {
       this.submitClicked = false;
-
-      this.orderForm = this.createFormGroup(args.data as RecipeModel);
+      this.recipeIngredientService.setRecipeKey((args.rowData as RecipeModel).key as string);
+      this.orderForm = this.createFormGroup(args.rowData as RecipeModel);
     }
+    // new record
     if (args.requestType === 'save') {
-      this.submitClicked = true;
-      if (this.orderForm.valid) {
-        args.data = this.orderForm.value;
-      } else {
-        args.cancel = true;
+      if (args.action === 'new') {
+        this.submitClicked = true;
+        if (this.orderForm.valid) {
+          // send the new item to the add on the base service
+          this.recipeService.addData(args.data as RecipeModel)
+          // refresh the datasource
+          this.recipeService.execute(this.state);
+        } else {
+          args.cancel = true;
+        }
       }
+      // edit an existing record
+      else if (args.action === 'edit') {
+        this.submitClicked = true;
+        if (this.orderForm.valid) {
+          // send the edit operation to the base service
+          this.recipeService.updateData((args.data as RecipeModel).key as string, args.data as RecipeModel);
+          // refresh the datasource
+          this.recipeService.execute(this.state);
+        } else {
+          args.cancel = true;
+        }
+      }
+    }
+    // delete an existing record
+    else if (args.requestType === 'delete') {
+      var key = (args.data as RecipeModel[])[0].key as string;
+      // send delete to the base service
+      this.recipeService.deleteData(key);
+      // refresh datasource
+      this.recipeService.execute(this.state);
     }
   }
 
-  actionComplete(args: { requestType: string; dialog: Dialog; form: { elements: { namedItem: (arg0: string) => HTMLInputElement; }; }; }): void {
+  // databind on the action complete
+  actionComplete(args: DialogEditEventArgs): void {
     if ((args.requestType === 'beginEdit' || args.requestType === 'add')) {
-      if (Browser.isDevice) {
-        args.dialog.height = window.innerHeight - 90 + 'px';
-        (<Dialog>args.dialog).dataBind();
-      }
-      // Set initail Focus
-      if (args.requestType === 'beginEdit') {
-        (args.form.elements.namedItem('ingredients') as HTMLInputElement).focus();
-      } else if (args.requestType === 'add') {
-        (args.form.elements.namedItem('description') as HTMLInputElement).focus();
-      }
-
+      (<Dialog>args.dialog).dataBind();
     }
-
   }
 
-
-
-
+// getters for the FormGroup for the grid to use for edit operations
+  get name(): AbstractControl { return this.orderForm.get('name'); }
   get description(): AbstractControl { return this.orderForm.get('description'); }
-
   get ingredients(): AbstractControl { return this.orderForm.get('ingredients'); }
-
   get ethnicity(): AbstractControl { return this.orderForm.get('ethnicity'); }
-
   get instructions(): AbstractControl { return this.orderForm.get('instructions'); }
-
   get meal_time(): AbstractControl { return this.orderForm.get('meal_time'); }
-
-
-
 }
-
-
-export interface IOrderModel {
-  description?:string;
-  ingredients?: string;
-  ethnicity?:string;
-  instructions?:string;
-  meal_time?: string;
-}
-
-
-

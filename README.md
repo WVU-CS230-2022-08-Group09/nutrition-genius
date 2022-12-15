@@ -35,6 +35,9 @@ Tutorial
 - For Recipes
   - With both community and personal recipe additions, users are able to view nutritional information for recipes in a grid similar to the trackers. Many recipes also feature links to the full recipe!
 
+- For Meals
+  - Users are shown multiple entries of delicious recipes. The user is able to group by category and edit meals as well.
+
 APIs & References
 ----------
 

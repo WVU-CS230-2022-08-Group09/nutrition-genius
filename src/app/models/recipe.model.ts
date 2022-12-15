@@ -7,6 +7,7 @@ export class RecipeModel extends BaseObject { //extends Observable<IngredientMod
     ethnicity!:string;
     instructions!:string;
     meal_time!: string;
+    calories!: number;
     override listSource = "recipes";
 
 }

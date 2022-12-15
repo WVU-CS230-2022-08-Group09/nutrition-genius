@@ -11,8 +11,10 @@ Summary: Signup page that provides users with a means to create and authenticate
         <p class="card-text2">Enter the following information to get started today!</p>
         <div class="row">
             <div class="col-12">
+                <!-- initialize NgForm to submit data to -->
                 <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
                     
+                <!-- create input types to store data to -->
                     <div class="row">
                         <div class="col mb-3">
                         <span class="input-group-text">First Name:</span>
@@ -24,13 +26,14 @@ Summary: Signup page that provides users with a means to create and authenticate
                         </div>
                       </div>
     
+                      <!-- make email required  -->
                     <div class="input-group mb-3">
                         <span class="input-group-text">Email:</span>
                         <input type="text" class="form-control" placeholder="Email"
                         ngMode name="email"
                         required email>
                     </div>
-          
+                        <!-- make password required -->
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">Password:</span>
                         <input type="password" class="form-control" placeholder="Password"
@@ -38,6 +41,7 @@ Summary: Signup page that provides users with a means to create and authenticate
                         required password>
                     </div>
                     
+                    <!-- button to be disabled if auth is not valid -->
                     <div class="d-grid gap-2 col-2 mx-auto">
                         <button routerLink='Main' class="btn btn-dark" type="submit" [disabled] = "!authForm.valid" (click)="buttonClicked='SignUp'">
                             Get Started

@@ -25,7 +25,6 @@ export abstract class BaseService<T extends BaseObject> extends Subject<DataStat
     public execute(state: any): void {
         // subscribe to the observable to get changes in data state in the grid
         this.getData(state).subscribe(i => super.next(i as DataStateChangeEventArgs));
-        this.getData(state).subscribe(i => console.log(i));
     }
 
     // get all of the rows to display in the grid
@@ -42,24 +41,22 @@ export abstract class BaseService<T extends BaseObject> extends Subject<DataStat
             )
     }
 
+    // get a DropDown array of any list that contains a key and name
     public returnList(listName: string): DropDown[] {
-        var result : DropDown[] = [];
+        var result: DropDown[] = [];
         var dbase = getDatabase(this._db.database.app);
         const dbRef = ref(dbase);
         get(child(dbRef, listName)).then((i) => {
-                console.log(i.val());
-                i.forEach((j) => {
-                    let ingr : DropDown = {
-                        value: j.val().key,
-                        text: j.val().name,
-                        
-                    };
-                    result.push(ingr);
-                    // debugger;
-                });
-          });
-        //   debugger;
-          return result;
+            i.forEach((j) => {
+                let ingr: DropDown = {
+                    value: j.val().key,
+                    text: j.val().name,
+
+                };
+                result.push(ingr);
+            });
+        });
+        return result;
     }
 
     addData(newObject: any): any {

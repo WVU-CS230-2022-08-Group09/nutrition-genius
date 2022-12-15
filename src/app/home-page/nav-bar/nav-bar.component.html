@@ -1,22 +1,25 @@
 <!--
 HTML Code: Nav Bar
-Contributor(s):
+Contributor(s): Makayla Davis
 Summary: 
 -->
 
+<!-- implement navbar -->
 <nav class="navbar navbar-expand-lg" style="background-color:aliceblue">
   <div class="container-fluid">
     <a href="#" class="navbar-brand">
+      <!-- original logo design -->
       <img src="\assets\images\NutritionGeniusLogo.png" width="100"
       height="100" 
-       
       alt="Nutrition Genius">
   </a>
+  <!-- make navbar collapsable -->
       <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
           <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
           <div class="navbar-nav">
+            <!-- include router links -->
               <a routerLink="" href="#" class="nav-item nav-link active">Home</a>
               <a routerLink="Profile" href="#" class="nav-item nav-link active">Profile</a>
               <a routerLink="Recipes" href="#" class="nav-item nav-link active">Recipes</a>
@@ -31,6 +34,7 @@ Summary:
               </div>
               
           </div>
+          <!-- profile and signup page buttons -->
           <div class="navbar-nav ms-auto">
             <button type="button" class="btn me-3">
               <a routerLink="Profile" href="#" class="nav-item nav-link active">Login</a>
