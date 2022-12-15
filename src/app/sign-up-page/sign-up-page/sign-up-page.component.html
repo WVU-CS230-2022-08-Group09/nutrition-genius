@@ -39,7 +39,7 @@ Summary: Signup page that provides users with a means to create and authenticate
                     </div>
                     
                     <div class="d-grid gap-2 col-2 mx-auto">
-                        <button class="btn btn-dark" type="submit" [disabled] = "!authForm.valid" (click)="buttonClicked='SignUp'">
+                        <button routerLink='Main' class="btn btn-dark" type="submit" [disabled] = "!authForm.valid" (click)="buttonClicked='SignUp'">
                             Get Started
                         </button>
                     </div>
