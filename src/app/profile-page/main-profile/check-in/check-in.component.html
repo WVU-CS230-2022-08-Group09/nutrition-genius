@@ -1,0 +1,103 @@
+<div id="main" class="check-in-table">
+
+    <h1 class="main-title">Check-In</h1>
+  
+    <form id="checkIn" class="form" action="/measurements/save" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="tA5EHip6ODGBjP7VerNF9hcK84trR8j4scDobGDKTcvOTXJA79hASEkcIzDIFdHDB0JvjdEC3kWYYxeEJna2Rw==">
+  
+  
+      <p class="cont-2">
+  
+              <label>Enter today's weight:</label>
+  
+              <span class="unit-form-field standard">
+  
+  
+    <span class="">
+      <input type="text" name="weight[display_value]" id="weight_display_value" class="text short" data-unit-system="lbs">
+  </span>
+    <label class="weight_label unit_label" for="weight_display_value">lbs</label>
+  
+  </span>
+  
+              <br>
+        <span>
+                Last recorded weight: 156 lbs on 6/02/2021
+        </span>
+      </p>
+  
+      <table class="table0" summary="check-in" style="display:table;">
+  
+        <colgroup>
+          <col class="col-1">
+          <col class="col-2">
+          <col class="col-3 col-num">
+        </colgroup>
+  
+        <thead>
+  
+          <tr>
+  
+            <td>Other Measurements</td>
+            <td class="col-num">Last Entry</td>
+            <td class="col-num">Today's Entry</td>
+  
+          </tr>
+  
+        </thead>
+  
+        <tfoot>
+  
+          <tr>
+  
+            <td class="first" colspan="3"><a class="link" href="/measurements/change">Track Additional Measurements</a> <span>|</span> <a class="link" href="/measurements/edit">Edit Previous Entries</a></td>
+  
+          </tr>
+  
+        </tfoot>
+  
+        <tbody>
+  
+          <tr>
+              <td class="first">Neck</td>
+              <td class="col-num">
+                      None
+              </td>
+              <td>
+                  <input type="hidden" name="measurement_type[0]" id="measurement_type[0]" value="117890068">
+                  <input type="text" name="measurement_value[0]" id="measurement_value[0]" value="" autocomplete="off" class="text short">
+              </td>
+          </tr>
+          <tr>
+              <td class="first">Waist</td>
+              <td class="col-num">
+                      None
+              </td>
+              <td>
+                  <input type="hidden" name="measurement_type[1]" id="measurement_type[1]" value="117890069">
+                  <input type="text" name="measurement_value[1]" id="measurement_value[1]" value="" autocomplete="off" class="text short">
+              </td>
+          </tr>
+          <tr>
+              <td class="first">Hips</td>
+              <td class="col-num">
+                      None
+              </td>
+              <td>
+                  <input type="hidden" name="measurement_type[2]" id="measurement_type[2]" value="117890070">
+                  <input type="text" name="measurement_value[2]" id="measurement_value[2]" value="" autocomplete="off" class="text short">
+              </td>
+          </tr>
+  
+        </tbody>
+  
+      </table>
+  
+      <p class="cont-1">
+  
+        <input type="submit" class="button" value="Save Changes">
+  
+      </p>
+  
+    </form><!-- / #checkIn -->
+  
+  </div>

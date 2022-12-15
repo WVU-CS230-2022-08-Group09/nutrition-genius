@@ -11,7 +11,8 @@ import { MainProfileComponent } from './profile-page/main-profile/main-profile.c
 import { MealsComponent } from './meals/meals.component';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page/sign-up-page.component';
 import { RecipeIngredientComponent } from './recipe/recipe-ingredient.component';
-
+import { CheckInComponent } from './profile-page/main-profile/check-in/check-in.component';
+import { GoalsComponent } from './profile-page/main-profile/goals/goals.component';
 
 
 
@@ -25,8 +26,9 @@ const routes: Routes = [
   {path : 'Contact', component:ContactComponent},
   {path : 'Main', component:MainProfileComponent},
   {path : 'Meals', component:MealsComponent },
-  {path : 'RecipeIngredient', component:RecipeIngredientComponent}
-
+  {path : 'RecipeIngredient', component:RecipeIngredientComponent},
+  {path : 'Check', component:CheckInComponent},
+  {path : 'Goals', component:GoalsComponent}
 ];
 
 

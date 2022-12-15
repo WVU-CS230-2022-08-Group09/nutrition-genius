@@ -1,0 +1,19 @@
+.MuiGrid-root{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    word-break: break-all;
+    color: darkolivegreen;
+    text-align: left;
+    position: relative;
+    width: 940px;
+    margin: 0px auto;
+    padding-left: 35px;
+}
+
+
+.btn{
+    background-color:rgba(85, 107, 47, 0.644) ;
+    width: 100px;
+    height: 50px;
+}

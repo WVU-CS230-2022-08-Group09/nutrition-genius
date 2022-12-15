@@ -24,6 +24,9 @@ import { SignUpPageComponent } from './sign-up-page/sign-up-page/sign-up-page.co
 import { MealDetailComponent } from './meals/meal-detail/meal-detail.component';
 import { MealRecipeComponent } from './meals/meal-recipe/meal-recipe.component';
 import { RecipeIngredientComponent } from './recipe/recipe-ingredient.component';
+import { SettingsComponent } from './profile-page/main-profile/settings/settings.component';
+import { GoalsComponent } from './profile-page/main-profile/goals/goals.component';
+import { CheckInComponent } from './profile-page/main-profile/check-in/check-in.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,10 @@ import { RecipeIngredientComponent } from './recipe/recipe-ingredient.component'
     SignUpPageComponent,
     MealDetailComponent,
     MealRecipeComponent,
-    RecipeIngredientComponent
+    RecipeIngredientComponent,
+    SettingsComponent,
+    CheckInComponent,
+    GoalsComponent
   ],
   imports: [
     BrowserModule,
