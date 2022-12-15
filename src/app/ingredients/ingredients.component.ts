@@ -1,3 +1,7 @@
+//Component: Ingredients Component
+//Contributor(s):
+//Summary: 
+
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { GridComponent, EditService, ToolbarService, PageSettingsModel } from '@syncfusion/ej2-angular-grids';
 import { DataStateChangeEventArgs, DataSourceChangedEventArgs } from '@syncfusion/ej2-angular-grids';

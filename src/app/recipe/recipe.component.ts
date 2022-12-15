@@ -1,3 +1,7 @@
+//Component: Recipe
+//Contributor(s):
+//Summary: 
+
 import { Component, Input, OnInit } from '@angular/core';
 import { GroupSettings, GroupSettingsModel } from '@syncfusion/ej2-angular-grids';
 import { view_all_recipes } from './recipe-database';

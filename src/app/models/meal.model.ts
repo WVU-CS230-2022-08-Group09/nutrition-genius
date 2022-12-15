@@ -1,3 +1,8 @@
+//Model: Meal Model
+//Contributor(s):
+//Summary: 
+
+
 import { BaseObject } from "./base.object";
 
 export class MealModel extends BaseObject { //extends Observable<IngredientModel> {
