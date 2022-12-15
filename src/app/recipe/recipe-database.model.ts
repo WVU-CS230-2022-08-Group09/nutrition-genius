@@ -1,3 +1,7 @@
+//Model: Recipes Model
+//Contributor(s):
+//Summary: 
+
 export class view_all_recipes_model {
     name: string
     meal_type: string

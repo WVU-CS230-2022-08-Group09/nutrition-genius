@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
+=======
+//Component: Recipe
+//Contributor(s):
+//Summary: 
+
+import { Component, Input, OnInit } from '@angular/core';
+>>>>>>> 746bb4bf03d6f3324f99f6b5c2e88ab05f51d3e4
 import { GroupSettings, GroupSettingsModel } from '@syncfusion/ej2-angular-grids';
 import { view_all_recipes } from './recipe-database';
 import { view_all_recipes_model } from './recipe-database.model';

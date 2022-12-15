@@ -1,3 +1,7 @@
+//Component: Home Page Component
+//Contributor(s):
+//Summary: 
+
 import {Component, OnInit} from '@angular/core';
 
 @Component({

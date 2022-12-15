@@ -11,7 +11,6 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { GridModule, PagerModule, GroupService } from '@syncfusion/ej2-angular-grids';
 import { IngredientsComponent } from './ingredients/ingredients.component';
-import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
@@ -48,7 +47,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     GridModule, PagerModule,
    HttpClientModule,
-   AngularFireModule.initializeApp(environment.firebase),
    AngularFireAuthModule,
    AngularFirestoreModule,
    AngularFireStorageModule,

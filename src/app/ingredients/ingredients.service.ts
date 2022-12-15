@@ -1,3 +1,7 @@
+//Injectable: Ingredients Service
+//Contributor(s):
+//Summary: 
+
 import { Injectable } from "@angular/core";
 import { IngredientModel } from "../models/ingredient.model";
 import { AngularFireDatabase } from "@angular/fire/compat/database";

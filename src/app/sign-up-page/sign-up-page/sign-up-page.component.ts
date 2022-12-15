@@ -1,7 +1,9 @@
+//Component: Sign Up Page
+//Contributor(s): Jacob Ochsenbein
+//Summary: Component for the sign up page, contains user creation and authentication methods
+
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { AuthResponse } from 'src/app/services/shared/auth.response';
 import { AuthService } from 'src/app/services/shared/auth.service';
 
 @Component({
@@ -10,29 +12,20 @@ import { AuthService } from 'src/app/services/shared/auth.service';
   styleUrls: ["./sign-up-page.component.css"]
 })
 export class SignUpPageComponent {
+  
+  //Objects used by AuthService
   public buttonClicked?:string;
-  private authObservable!: Observable<AuthResponse>;
-
   constructor(private authService:AuthService) {
   }
 
+  //ngForm method that calls the signup method from AuthService
   onSubmit(data: NgForm){
+    //Console output
     console.log("Credentials entered");
-
-    this.authObservable = this.authService.signup(data.value.name, data.value.email, data.value.password);
-
-    this.authObservable.subscribe(
-      (data:AuthResponse) =>{
-        console.log(data);
-      },
-      error => {
-        console.log(error);
-      }
-    );
-      data.resetForm();
+    //Signup method call
+    this.authService.signup(data.value.email, data.value.password);
+    //resets form for security purposes
+    data.resetForm();
   }
-
-
-
 }
 
