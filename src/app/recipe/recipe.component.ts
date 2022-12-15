@@ -1,13 +1,9 @@
-
 //Component: Recipe
 //Contributor(s):
 //Summary: 
 
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { GroupSettings, GroupSettingsModel } from '@syncfusion/ej2-angular-grids';
-import { view_all_recipes } from './recipe-database';
-import { view_all_recipes_model } from './recipe-database.model';
-import { sampleData } from "./recipe-datasource"
 import { GridComponent, EditService, ToolbarService, PageSettingsModel, IEditCell, Column, SaveEventArgs, DialogEditEventArgs } from '@syncfusion/ej2-angular-grids';
 import { DataStateChangeEventArgs, DataSourceChangedEventArgs } from '@syncfusion/ej2-angular-grids';
 import { Observable, Subject, map, pipe } from 'rxjs';

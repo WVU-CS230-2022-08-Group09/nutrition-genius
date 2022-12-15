@@ -12,6 +12,7 @@ import { RecipeComponent } from './recipe/recipe.component';
 import { GridModule, PagerModule, GroupService } from '@syncfusion/ej2-angular-grids';
 import { IngredientsComponent } from './ingredients/ingredients.component';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
@@ -53,6 +54,7 @@ import { CheckInComponent } from './profile-page/main-profile/check-in/check-in.
     AppRoutingModule,
     GridModule, PagerModule,
    HttpClientModule,
+   AngularFireModule.initializeApp(environment.firebase),
    AngularFireAuthModule,
    AngularFirestoreModule,
    AngularFireStorageModule,

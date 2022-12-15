@@ -9,8 +9,12 @@ import { Observable, Subject, map, pipe } from 'rxjs';
 import { ForeignKeyService } from '@syncfusion/ej2-angular-grids';
 import { RecipeIngredientService } from './recipe-Ingredient.service';
 import { RecipeIngredientModel } from '../models/recipeIngredient.model';
+import { IngredientModel } from '../models/ingredient.model';
 import { ChangeDetectionStrategy } from '@angular/compiler';
 import { LegendItemStyle } from '@syncfusion/ej2-angular-charts';
+import { IngredientsService } from '../ingredients/ingredients.service';
+import { BaseObject } from '../models/base.object';
+
 // import { IngredientsService } from '../ingredients/ingredients.service';
 
 @Component({
@@ -26,14 +30,14 @@ export class RecipeIngredientComponent implements OnInit {
   public editSettings: Object;
   public toolbar: string[];
   public pageSettings: PageSettingsModel;
-  public ingredientData!: RecipeIngredientModel[];
+  public ingredientData!:BaseObject[];
   
 
   @ViewChild('grid')
   public grid!: GridComponent;
   autoComplete: any;
 
-  constructor(private recipeIngredientService: RecipeIngredientService) {
+  constructor(private recipeIngredientService: RecipeIngredientService) { //, private ingredientService: IngredientsService
     // this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Dialog' };
     // this.toolbar = ['Add', 'Edit', 'Delete'];
     // this.recipeIngredients = recipeIngredientService;
@@ -43,19 +47,21 @@ export class RecipeIngredientComponent implements OnInit {
     this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Dialog' };
     this.toolbar = ['Add', 'Edit', 'Delete'];
     this.recipeIngredients = recipeIngredientService;
+    // this.ingredientData = ingredientService;
     this.state = { skip: 0, take: 10 };
     this.pageSettings = { pageSize: 10 };
   }
 
   ngOnInit(): void {
+    this.recipeIngredientService.execute({take: 100});
+    this.ingredientData = this.recipeIngredientService.returnList("ingredients");
+    // this.ingredientService.execute(this.state);
+    //this.ingredientData = this.recipeIngredientService.execute("ingredients");
+    // this.recipeIngredientService.getList("ingredients").subscribe((p: any) => 
+    //   console.log(p.result));
+      // p.result. );
 
-    this.recipeIngredientService.execute(this.state);
-    //this.ingredientData = 
-    this.recipeIngredientService.getList("recipeIngredients").subscribe(p => 
-      // console.log(p));
-      this.ingredientData = p.result.val());
-    //debugger;
-    console.log(this.ingredientData);
+    // console.log(this.ingredientData);
   }
 
   // Method that handles state changes (paging, sorting, etc.)
