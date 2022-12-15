@@ -1,74 +1,83 @@
 <div class="control-section">
-    <ejs-grid [dataSource]='recipes |async' allowPaging='true' [pageSettings]='pageSettings'
-        [editSettings]='editSettings' [toolbar]='toolbar' (actionBegin)='actionBegin($event)'
-        (actionComplete)='actionComplete($event) ' >
+    <ejs-grid [dataSource]='recipes |async' allowPaging='true' [pageSettings]='pageSettings' [allowGrouping]="true"
+        [groupSettings]="groupOptions" [editSettings]='editSettings' [toolbar]='toolbar'
+        (actionBegin)='actionBegin($event)' (actionComplete)='actionComplete($event) '>
         <e-columns>
             <e-column field="name" headerText='name' width='120'></e-column>
-            <e-column field="description" headerText='description' width='120'></e-column>
-            <e-column field="ethnicity" headerText='ethnicity' width='120'></e-column>
-            <e-column field="ingredients" headerText='ingredients' width='120'></e-column>
+            <e-column field="description" headerText='Description' width='120'></e-column>
+            <e-column field="ethnicity" headerText='Ethnicity' width='120'></e-column>
+            <e-column field="ingredients" headerText='Ingredients' width='120'></e-column>
             <e-column field="instructions" headerText='instructions' width='120'></e-column>
-            <e-column field="meal_time" headerText='meal_time' width='120'></e-column>
+            <e-column field="meal_time" headerText='Meal time' width='120'></e-column>
         </e-columns>
 
         <ng-template #editSettingsTemplate let-data>
             <div [formGroup]="orderForm">
-                <div class="form-row">
-                    <!-- [attr.disabled]="!data.isAdd ? '' : null" -->
-                    <div class="form-group col-md-6">
-                        <div class="e-float-input e-control-wrapper"
-                            [ngClass]="{'e-error': data.invalid && (data.dirty || data.touched)}">
-                            <input formControlName="name" data-msg-containerid='nameError' id="name" name="name"
-                                type="text" >
-                            <span class="e-float-line"></span>
-                            <label class="e-float-text e-label-top" for="name">Name</label>
-                        </div>
-                        <!-- <div id="nameError" > 
+                <div class="justify-content-center">
+                    <div class="form-row">
+                        <!-- [attr.disabled]="!data.isAdd ? '' : null" -->
+                        <div class="form-group col-md-6">
+                            <div class="e-float-input e-control-wrapper"
+                                [ngClass]="{'e-error': data.invalid && (data.dirty || data.touched)}">
+                                <input formControlName="name" data-msg-containerid='nameError' id="name" name="name"
+                                    type="text">
+                                <span class="e-float-line"></span>
+                                <label class="e-float-text e-label-top" for="name">Name</label>
+                            </div>
+                            <!-- <div id="nameError" > 
                             <label class="e-error" for="name" id="name-info" style="display: block;">*Name is required</label>
                         </div> -->
-                        <!--  [style.visibility]='((name.invalid && (name.dirty || name.touched)) || (name.invalid && submitClicked))? "visible": "hidden"' -->
-                    </div>
-                
-                    <div class="form-group col-md-6">
-                        <div class="e-float-input e-control-wrapper"
-                            [ngClass]="{'e-error': data.invalid && (data.dirty || data.touched)}">
-                            <input formControlName="description" data-msg-containerid='descriptionError'
-                                id="description" name="description" type="text">
-                            <span class="e-float-line"></span>
-                            <label class="e-float-text e-label-top" for="description">Description</label>
+                            <!--  [style.visibility]='((name.invalid && (name.dirty || name.touched)) || (name.invalid && submitClicked))? "visible": "hidden"' -->
                         </div>
-                        <!-- <div id="descriptionError">
+
+                        <div class="form-group col-md-6">
+                            <div class="e-float-input e-control-wrapper"
+                                [ngClass]="{'e-error': data.invalid && (data.dirty || data.touched)}">
+                                <input formControlName="description" data-msg-containerid='descriptionError'
+                                    id="description" name="description" type="text">
+                                <span class="e-float-line"></span>
+                                <label class="e-float-text e-label-top" for="description">Description</label>
+                            </div>
+                            <!-- <div id="descriptionError">
                             <label class="e-error" for="description" id="description-info" style="display: block;">*Description is required</label>
                         </div> -->
-                    </div>
-                </div>
-                <div class="form-row">
-
-                    <div class="form-group col-md-6">
-                        <div class="e-float-input e-control-wrapper">
-                            <input formControlName="ethnicity" data-msg-containerid='ethnicityError' id="ethnicity"
-                                name="ethnicity" type="text" >
-                            <span class="e-float-line"></span>
-                            <label class="e-float-text e-label-top" for="ethnicity"> Ethnicity</label>
                         </div>
-                        <!-- <div id="ethnicityError">
+                    </div>
+
+                    <div class="form-row">
+
+                        <div class="form-group col-md-6">
+                            <div class="e-float-input e-control-wrapper">
+                                <input formControlName="ethnicity" data-msg-containerid='ethnicityError' id="ethnicity"
+                                    name="ethnicity" type="text">
+                                <span class="e-float-line"></span>
+                                <label class="e-float-text e-label-top" for="ethnicity"> Ethnicity</label>
+                            </div>
+                            <!-- <div id="ethnicityError">
                             <label class="e-error" for="ethnicity" id="ethnicity-info" style="display: block;">*Ethnicity is required</label>
                         </div> -->
-                    </div>
-                
-
-                    <div class="form-group col-md-6">
-                        <div class="e-float-input e-control-wrapper">
-                            <input formControlName="ingredients" data-msg-containerid='ingredientsError'
-                                id="ingredients" name="ingredients" type="text">
-                            <span class="e-float-line"></span>
-                            <label class="e-float-text e-label-top" for="ingredients">Ingredients</label>
                         </div>
-                        <!-- <div id="ingredientsError">
+
+
+                        <div class="form-group col-md-6">
+                            <div class="e-float-input e-control-wrapper">
+                                <input formControlName="ingredients" data-msg-containerid='ingredientsError'
+                                    id="ingredients" name="ingredients" type="text">
+                                <span class="e-float-line"></span>
+                                <label class="e-float-text e-label-top" for="ingredients">Ingredients</label>
+                            </div>
+                            <!-- <div id="ingredientsError">
                             <label class="e-error" for="ingredients" id="ingredients-info" style="display: block;">*Ingredients is required</label>
                         </div> -->
+                        </div>
+
                     </div>
 
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <app-recipe-ingredient ></app-recipe-ingredient>
+                        </div>
+                    </div>
                 </div>
             </div>
         </ng-template>

@@ -5,8 +5,9 @@
 import { BaseObject } from "./base.object";
 
 export class RecipeIngredientModel extends BaseObject { 
+    
     recipe!:string;
-    ingredient!:string;
+    ingredient!: string;
     amount!: number;
     override listSource = "recipeIngredients";
 }
