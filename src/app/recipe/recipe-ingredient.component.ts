@@ -14,6 +14,7 @@ import { ChangeDetectionStrategy } from '@angular/compiler';
 import { LegendItemStyle } from '@syncfusion/ej2-angular-charts';
 import { IngredientsService } from '../ingredients/ingredients.service';
 import { BaseObject } from '../models/base.object';
+import { DropDown } from '../models/dropDown.model'
 
 // import { IngredientsService } from '../ingredients/ingredients.service';
 
@@ -30,7 +31,7 @@ export class RecipeIngredientComponent implements OnInit {
   public editSettings: Object;
   public toolbar: string[];
   public pageSettings: PageSettingsModel;
-  public ingredientData!:BaseObject[];
+  public ingredientData!:DropDown[];
   
 
   @ViewChild('grid')
