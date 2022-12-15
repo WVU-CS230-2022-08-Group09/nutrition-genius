@@ -47,7 +47,7 @@ export class RecipeComponent implements OnInit {
   constructor(private recipeService: RecipeService) {
 
     this.editSettings = { allowEditing: true, allowAdding: true, allowDeleting: true, mode: 'Dialog' };
-    this.toolbar = ['Add', 'Edit', 'Delete', 'Update', 'Cancel'];
+    this.toolbar = ['Add', 'Edit', 'Delete'];
     this.recipes = recipeService;
     this.state = { skip: 0, take: 10 };
     this.pageSettings = { pageSize: 10 };
@@ -86,37 +86,57 @@ export class RecipeComponent implements OnInit {
       this.orderForm = this.createFormGroup(args.rowData as RecipeModel);
     }
     if (args.requestType === 'save') {
-      this.submitClicked = true;
-      if (this.orderForm.valid) {
-        args.data = this.orderForm.value;
-
-        this.recipeService.addData(args.data as RecipeModel)
-      } else {
-        args.cancel = true;
+      if (args.action === 'new') {
+        this.submitClicked = true;
+        if (this.orderForm.valid) {
+          // args.data = this.orderForm.value;
+          this.recipeService.addData(args.data as RecipeModel)
+          this.recipeService.execute(this.state);
+        } else {
+          args.cancel = true;
+        }
+      } else if (args.action === 'edit') {
+        this.submitClicked = true;
+        if (this.orderForm.valid) {
+          // args.data = this.orderForm.value;
+          this.recipeService.updateData((args.data as RecipeModel).key as string, args.data as RecipeModel);
+          this.recipeService.execute(this.state);
+        } else {
+          args.cancel = true;
+        }
       }
+    } else if (args.requestType === 'delete' ) {
+     
+        // args.data = this.orderForm.value;
+        var key = (args.data as RecipeModel[])[0].key as string;
+      this.recipeService.deleteData(key);
+        this.recipeService.execute(this.state);
+     
     }
   }
 
-  actionComplete(args: { requestType: string; dialog: Dialog; form: { elements: { namedItem: (arg0: string) => HTMLInputElement; }; }; }): void {
+  actionComplete(args: DialogEditEventArgs): void {
     // debugger;
     if ((args.requestType === 'beginEdit' || args.requestType === 'add')) {
-      if (Browser.isDevice) {
-        args.dialog.height = window.innerHeight - 90 + 'px';
+      // if (Browser.isDevice) {
+        // if(args.dialog) {
+        //   (args.dialog as Dialog).height = window.innerHeight - 90 + 'px';
+        // }
         (<Dialog>args.dialog).dataBind();
-      }
+      // }
       // Set initail Focus
-      if (args.requestType === 'beginEdit') {
-        (args.form.elements.namedItem('name') as HTMLInputElement).focus();
-      } else if (args.requestType === 'add') {
-        (args.form.elements.namedItem('name') as HTMLInputElement).focus();
-      }
+      // if (args.requestType === 'beginEdit') {
+      //   (args.form.elements.namedItem('name') as HTMLInputElement).focus();
+      // } else if (args.requestType === 'add') {
+      //   (args.form.elements.namedItem('name') as HTMLInputElement).focus();
+      // }
 
     }
 
   }
 
 
-
+  get name(): AbstractControl { return this.orderForm.get('name'); }
 
   get description(): AbstractControl { return this.orderForm.get('description'); }
 
