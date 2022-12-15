@@ -11,7 +11,7 @@ Summary:
     <ejs-grid #grid [dataSource]='recipeIngredients | async' [editSettings]="editSettings" [toolbar]="toolbar" 
     (dataSourceChanged)='dataSourceChanged($event)' (dataStateChange)= 'dataStateChange($event)'>
         <e-columns>
-            <e-column field="key" headerText="key"></e-column>
+            <!-- <e-column field="key" headerText="key"></e-column> -->
             <e-column field="recipe" headerText="Recipe"></e-column>
             <e-column field="ingredient" foreignKeyValue="text" foreignKeyField="value" [dataSource]="ingredientData" headerText="Ingredient" ></e-column>
             <e-column field="amount" headerText="Amount"></e-column>

@@ -60,40 +60,12 @@ export class RecipeComponent implements OnInit {
   }
 
 
-  // Method that handles state changes (paging, sorting, etc.)
-  public dataStateChange(state: DataStateChangeEventArgs): void {
-    this.recipeService.execute(state);
-  }
-
-  // Method that handles data changes in the grid
-  public dataSourceChanged(state: DataSourceChangedEventArgs): void {
-    if (state.action === 'add') {
-      // Add new record to the database
-      this.recipeService.addData(state.data as RecipeModel).subscribe(() => {
-        state.endEdit?.();
-      });
-
-    } else if (state.action === 'edit') {
-      // edit existing record using the key to identify the row to edit
-      this.recipeService.updateData((state.data as RecipeModel).key as string, state.data as RecipeModel).subscribe(() => {
-        state.endEdit?.();
-      }, () => {
-        this.grid!.closeEdit();
-      });
-    } else if (state.requestType === 'delete') {
-      // delete record based off of the key
-      var key = (state.data as RecipeModel[])[0].key as string;
-      this.recipeService.deleteData(key).subscribe(() => {
-        state.endEdit?.();
-      });
-    }
-  }
-
   createFormGroup(data: RecipeModel): FormGroup {
     return new FormGroup({
+      name: new FormControl(data.name, Validators.required),
       description: new FormControl(data.description, Validators.required),
       ethnicity: new FormControl(data.ethnicity),
-      ingredients: new FormControl(data.ingredients, Validators.required),
+      ingredients: new FormControl(data.ingredients),
       instructions: new FormControl(data.instructions),
       meal_time: new FormControl(data.meal_time)
 
@@ -111,12 +83,14 @@ export class RecipeComponent implements OnInit {
     if (args.requestType === 'beginEdit' || args.requestType === 'add') {
       this.submitClicked = false;
 
-      this.orderForm = this.createFormGroup(args.data as RecipeModel);
+      this.orderForm = this.createFormGroup(args.rowData as RecipeModel);
     }
     if (args.requestType === 'save') {
       this.submitClicked = true;
       if (this.orderForm.valid) {
         args.data = this.orderForm.value;
+
+        this.recipeService.addData(args.data as RecipeModel)
       } else {
         args.cancel = true;
       }
@@ -124,6 +98,7 @@ export class RecipeComponent implements OnInit {
   }
 
   actionComplete(args: { requestType: string; dialog: Dialog; form: { elements: { namedItem: (arg0: string) => HTMLInputElement; }; }; }): void {
+    // debugger;
     if ((args.requestType === 'beginEdit' || args.requestType === 'add')) {
       if (Browser.isDevice) {
         args.dialog.height = window.innerHeight - 90 + 'px';
@@ -131,9 +106,9 @@ export class RecipeComponent implements OnInit {
       }
       // Set initail Focus
       if (args.requestType === 'beginEdit') {
-        (args.form.elements.namedItem('ingredients') as HTMLInputElement).focus();
+        (args.form.elements.namedItem('name') as HTMLInputElement).focus();
       } else if (args.requestType === 'add') {
-        (args.form.elements.namedItem('description') as HTMLInputElement).focus();
+        (args.form.elements.namedItem('name') as HTMLInputElement).focus();
       }
 
     }
