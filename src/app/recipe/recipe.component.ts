@@ -19,8 +19,6 @@ import { RecipeService } from './recipe.service';
 import { RecipeModel } from '../models/recipe.model';
 import { PageService } from '@syncfusion/ej2-angular-grids';
 
-
-
 @Component({
   selector: 'app-recipe',
   templateUrl: './recipe.component.html',
@@ -39,7 +37,7 @@ export class RecipeComponent implements OnInit {
   public orderData!: IOrderModel;
 
   @ViewChild('grid')
-  public grid?: GridComponent;
+  public grid!: GridComponent;
   orderForm: any;
   data!: Object[];
   
@@ -60,30 +58,54 @@ export class RecipeComponent implements OnInit {
   }
 
 
+  // Method that handles state changes (paging, sorting, etc.)
+  public dataStateChange(state: DataStateChangeEventArgs): void {
+    this.recipeService.execute(state);
+  }
+
+  // Method that handles data changes in the grid
+  public dataSourceChanged(state: DataSourceChangedEventArgs): void {
+    if (state.action === 'add') {
+      // Add new record to the database
+      this.recipeService.addData(state.data as RecipeModel).subscribe(() => {
+        state.endEdit?.();
+      });
+
+    } else if (state.action === 'edit') {
+      // edit existing record using the key to identify the row to edit
+        this.recipeService.updateData((state.data as RecipeModel).key as string, state.data as RecipeModel).subscribe(() => {
+          state.endEdit?.();
+      } , () => {
+          this.grid.closeEdit();
+      });
+    } else if (state.requestType === 'delete') {
+      // delete record based off of the key
+      var key = (state.data as RecipeModel[])[0].key as string;
+      this.recipeService.deleteData(key).subscribe(() => {
+        state.endEdit?.();
+      });
+    }
+  }
+
+
   createFormGroup(data: RecipeModel): FormGroup {
     return new FormGroup({
-      name: new FormControl(data.name, Validators.required),
       description: new FormControl(data.description, Validators.required),
       ethnicity: new FormControl(data.ethnicity),
-      ingredients: new FormControl(data.ingredients),
+      ingredients: new FormControl(data.ingredients, Validators.required),
       instructions: new FormControl(data.instructions),
       meal_time: new FormControl(data.meal_time)
 
     });
   }
 
-  dateValidator() {
-    return (control: FormControl): null | Object => {
-      return control.value && control.value.getFullYear &&
-        (1900 <= control.value.getFullYear() && control.value.getFullYear() <= 2099) ? null : { OrderDate: { value: control.value } };
-    }
-  }
+ 
 
   actionBegin(args: SaveEventArgs): void {
     if (args.requestType === 'beginEdit' || args.requestType === 'add') {
       this.submitClicked = false;
 
-      this.orderForm = this.createFormGroup(args.rowData as RecipeModel);
+      this.orderForm = this.createFormGroup(args.data as RecipeModel);
     }
     if (args.requestType === 'save') {
       if (args.action === 'new') {

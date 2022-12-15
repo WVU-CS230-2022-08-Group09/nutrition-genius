@@ -28,6 +28,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SettingsComponent } from './profile-page/main-profile/settings/settings.component';
 import { GoalsComponent } from './profile-page/main-profile/goals/goals.component';
 import { CheckInComponent } from './profile-page/main-profile/check-in/check-in.component';
+import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
+import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
+import { CheckBoxModule } from '@syncfusion/ej2-angular-buttons';
+import { MultiSelectModule } from '@syncfusion/ej2-angular-dropdowns';
+import { CheckBoxSelectionService } from '@syncfusion/ej2-angular-dropdowns';
+import { DropDownListAllModule } from '@syncfusion/ej2-angular-dropdowns';
+import { FilterService } from '@syncfusion/ej2-angular-grids';
+import { PageService } from '@syncfusion/ej2-angular-grids';
 
 @NgModule({
   declarations: [
@@ -47,7 +55,8 @@ import { CheckInComponent } from './profile-page/main-profile/check-in/check-in.
     RecipeIngredientComponent,
     SettingsComponent,
     CheckInComponent,
-    GoalsComponent
+    GoalsComponent,
+    MealsComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +69,12 @@ import { CheckInComponent } from './profile-page/main-profile/check-in/check-in.
    AngularFireStorageModule,
    AngularFireDatabaseModule,
    FormsModule,
-   ReactiveFormsModule
+   ReactiveFormsModule,
+   DropDownListModule,
+   ButtonModule,
+   MultiSelectModule,
+   DropDownListModule,
+   CheckBoxModule
   ],
   providers: [GroupService],
   bootstrap: [AppComponent]

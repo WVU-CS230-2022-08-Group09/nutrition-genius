@@ -21,6 +21,7 @@
     "@angular/router": "^14.0.0-next.0",
     "@syncfusion/ej2-angular-buttons": "*",
     "@syncfusion/ej2-angular-charts": "*",
+    "@syncfusion/ej2-angular-dropdowns": "^20.3.60",
     "@syncfusion/ej2-angular-gantt": "*",
     "@syncfusion/ej2-angular-grids": "*",
     "@syncfusion/ej2-angular-popups": "^20.3.60",
