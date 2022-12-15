@@ -2,7 +2,7 @@
 //Contributor(s):
 //Summary: 
 
-export abstract class BaseObject {
+export class BaseObject {
     key?: string;
     name?: string;
     listSource?: string;

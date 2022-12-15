@@ -13,7 +13,7 @@ Summary:
         <e-columns>
             <e-column field="key" ></e-column>
             <e-column field="recipe" ></e-column>
-            <!-- <e-column field="ingredient" foreignKeyValue="name" [dataSource]="ingredientData" ></e-column> -->
+            <e-column field="ingredient" foreignKeyValue="key" [dataSource]="ingredientData" ></e-column>
             <e-column field="amount" ></e-column>
         </e-columns>
     </ejs-grid>
