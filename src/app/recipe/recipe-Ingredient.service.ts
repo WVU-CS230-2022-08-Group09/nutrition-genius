@@ -1,3 +1,6 @@
+//Injectable: Ingredients Service
+//Contributor(s): Steve Lough
+
 import { Injectable, Input } from "@angular/core";
 import { RecipeIngredientModel } from "../models/recipeIngredient.model";
 import { AngularFireDatabase } from "@angular/fire/compat/database";
