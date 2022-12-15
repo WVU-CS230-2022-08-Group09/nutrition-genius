@@ -3,10 +3,8 @@ import { Observable, Subject, map } from "rxjs";
 import { AngularFireDatabase, AngularFireList } from "@angular/fire/compat/database";
 import { DataStateChangeEventArgs } from '@syncfusion/ej2-angular-grids';
 import { BaseObject } from "../models/base.object";
+import { DropDown } from "../models/dropDown.model";
 import { getDatabase, ref, get, query, onValue, child } from "firebase/database";
-import { initializeApp } from "firebase/app";
-import { environment } from "src/environments/environment";
-import { IngredientModel } from "../models/ingredient.model";
 
 @Injectable(
     { providedIn: 'root' }
@@ -44,35 +42,17 @@ export abstract class BaseService<T extends BaseObject> extends Subject<DataStat
             )
     }
 
-    // public executeList(listName: string): void {
-    //     // subscribe to the observable to get changes in data state in the grid
-    //     this.getList(listName).subscribe(i => super.next(i as DataStateChangeEventArgs));
-    // }
-    // getList(listName: string): Observable<any> {
-    //     return this._db.list(listName).snapshotChanges()
-    //     .pipe(map((changes: any) => ({
-    //         count: changes.length,
-    //         result: changes.map((c: any) => ({
-    //             ...(c.payload.val()),
-    //             key: c.payload.key
-    //         }))
-    //     }))
-
-    //     )
-
-    // }
-
-    public returnList(listName: string): BaseObject[] {
-        var result : BaseObject[] = [];
+    public returnList(listName: string): DropDown[] {
+        var result : DropDown[] = [];
         var dbase = getDatabase(this._db.database.app);
         const dbRef = ref(dbase);
         get(child(dbRef, listName)).then((i) => {
                 console.log(i.val());
                 i.forEach((j) => {
-                    let ingr : BaseObject = {
-                        key: j.val().key,
-                        name: j.val().name,
-                        listSource: ""
+                    let ingr : DropDown = {
+                        value: j.val().key,
+                        text: j.val().name,
+                        
                     };
                     result.push(ingr);
                     // debugger;
